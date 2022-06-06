@@ -1,4 +1,5 @@
 from pathlib import Path
+from collections import Counter
 import requests
 import xml.etree.ElementTree as ET
 
@@ -41,20 +42,40 @@ class XMLProcessing:
                 pass
         return list(set(attribute_list))
 
-    #Filtermethode, filtert nach einer Kategorie (f_attr) und einem Wert (f_value). Der Rückgabewert (return_value) ist ein Attribut
+    #Filtermethode, filtert nach Kategorien (f_attr) und Werten (f_value). Der Rückgabewert (return_value) ist ein Attribut
     #der Puplikationen, das zurückgegeben werden soll
     def filter (tree, f_attr, f_value, return_value):
         puplis = []
-        #------ Auswahl aller Puplikationen, auf die der Filter passt ------
-        for elem in tree:   #tree = <DataObjects>
-            for e in elem:  #elem = <DataObject>
-                if e.attrib.get("name") == f_attr:  #e = <Attribute>
-                    for var in e:   #var = <Data>
-                        if f_value in str(var.text):
-                            puplis.append(elem) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
-                            print(var.text)
+        #Für jede Kategorie und dem dazu passenden Wert wird der Filterprozess einmal durchlaufen
+        for (attr, value) in zip(f_attr, f_value):
+
+            #------ Auswahl aller Puplikationen, auf die der Filter passt ------
+            for elem in tree:   #tree = <DataObjects>
+                for e in elem:  #elem = <DataObject>
+                    if e.attrib.get("name") == attr:  #e = <Attribute>
+                        for var in e:   #var = <Data>
+
+                            if str(var.text).isdigit(): #Überprüfung, ob nummerische Werte verglichen werden
+                                if value == str(var.text):
+                                    print("Zahl Filter")
+                                    puplis.append(elem) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
+                            else:
+                                if value in str(var.text):
+                                    print("Wort Filter")
+                                    puplis.append(elem) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
+                                    #print(var.text)
+
+
         #------ Auswertung der Filterergebnisse und Rückgabe des gescuhten Attributs ------
         result = []
+        #Kleine Erklärung, wie der multiple Filter funktioniert:
+        #Alles landet in der Liste puplis, also alles, was zu attr 1, 2, 3, ..., n passt.
+        #Am Ende überprüfe ich nur die Duplikate und filter' diese raus. Wenn ein Element genau so oft vorkommt,
+        #wie es Attribute gibt, treffen alle Filter auf dieses Element zu.
+        #Wichtig hierbei, das ganze muss noch weiter getestet werden, konnte es bisher nur mit einem kleinen Testdatensatz testen.
+        dup = Counter(puplis)
+        puplis = list([item for item in dup if dup[item] == len(list(f_attr))])
+
         for elem in puplis:
             for e in elem:
                 if e.attrib.get("name") == return_value:
@@ -66,7 +87,9 @@ class XMLProcessing:
 
 
 e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
-print(XMLProcessing.filter(e,"srcAuthors", "Sven", "cfTitle"))
+filter = ["srcAuthors", "publYear"]
+value = ["Sven", "2020"]
+print(XMLProcessing.filter(e, filter, value, "cfTitle"))
 
 
 # XMLProcessor = XMLProcessing()
