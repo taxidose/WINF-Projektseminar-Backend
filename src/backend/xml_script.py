@@ -85,6 +85,15 @@ class XMLProcessing:
         print(len(result))
         return result
 
+    def GetWantedDataFromDataObject(dataObjects, returnValue):
+        result = []
+        for elem in dataObjects:
+            for e in elem:
+                if e.attrib.get("name") == returnValue:
+                    for var in e:
+                        result.append(str(var.text))
+        #print(len(result))
+        return result
 
     def getLastCreatedItems(tree, lastDaysCount = 3, isPupl = True):
         results = []
@@ -113,15 +122,16 @@ class XMLProcessing:
 
         print(len(results))
         return results
-
+#===================================Renes Testwiese====================================
 e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
 p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
 filter = ["srcAuthors", "publYear"]
 value = ["Sven", "2020"]
 #print(XMLProcessing.filter(e, filter, value, "cfTitle"))
-
-print(XMLProcessing.getLastCreatedItems(p, 50, False))
-
+#lc = XMLProcessing.getLastCreatedItems(e, 1000)
+#print(XMLProcessing.GetWantedDataFromDataObject(lc, "cfTitle"))
+#print(lc)
+#============================================================================================
 # XMLProcessor = XMLProcessing()
 # data_sven = XMLProcessor.get_xml_data(xml_url=SVEN_URL)
 # all_attributes_sven = XMLProcessor.get_all_attributes_names(data_sven)
