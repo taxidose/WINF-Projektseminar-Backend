@@ -1,5 +1,6 @@
 from pathlib import Path
 from collections import Counter
+from datetime import datetime, timedelta
 import requests
 import xml.etree.ElementTree as ET
 
@@ -85,12 +86,41 @@ class XMLProcessing:
         return result
 
 
+    def getLastCreatedItems(tree, lastDaysCount = 3, isPupl = True):
+        results = []
+        dateFormat = "%Y-%m-%d"  # Im XML werden Datumseinträge im Format Jahr/Monat/Tag angegeben.
+        today = datetime.today()
+        compareDate = today - timedelta(days=lastDaysCount)  # Heute - lastDaysCount Tage = compareDate
+
+        print(type(compareDate))
+        if isPupl:  #Für Puplikationen
+            for child in tree:
+                #Vergleicht, ob die Puplikation im CRIS System nach 'lastDaysCount' Tagen erstellt wurde
+                createdOnDateString = child.attrib.get("createdOn").split('T')[0]
+                #Schaut, ob die Puplikation nach dem compareDate erstellt wurde
+                if datetime.strptime(createdOnDateString, dateFormat) >= compareDate:
+                    results.append(child)
+        else:   #Für Projekte
+            for child in tree:
+                for attribute in child:
+                    if attribute.attrib.get("name") == 'cfEndDate':
+                        for data in attribute:
+                            if data.text is not None \
+                                    and datetime.strptime(data.text, dateFormat) >= compareDate \
+                                    and datetime.strptime(data.text, dateFormat) < today:
+                                print(datetime.strptime(data.text, dateFormat))
+                                results.append(child)
+
+        print(len(results))
+        return results
 
 e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
+p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
 filter = ["srcAuthors", "publYear"]
 value = ["Sven", "2020"]
-print(XMLProcessing.filter(e, filter, value, "cfTitle"))
+#print(XMLProcessing.filter(e, filter, value, "cfTitle"))
 
+print(XMLProcessing.getLastCreatedItems(p, 50, False))
 
 # XMLProcessor = XMLProcessing()
 # data_sven = XMLProcessor.get_xml_data(xml_url=SVEN_URL)
