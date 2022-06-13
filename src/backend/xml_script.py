@@ -45,7 +45,7 @@ class XMLProcessing:
 
     #Filtermethode, filtert nach Kategorien (f_attr) und Werten (f_value). Der Rückgabewert (return_value) ist ein Attribut
     #der Puplikationen, das zurückgegeben werden soll
-    def filter (tree, f_attr, f_value, return_value):
+    def filter (tree, f_attr, f_value):
         puplis = []
         #Für jede Kategorie und dem dazu passenden Wert wird der Filterprozess einmal durchlaufen
         for (attr, value) in zip(f_attr, f_value):
@@ -66,8 +66,8 @@ class XMLProcessing:
                                     #print(var.text)
 
 
-        #------ Auswertung der Filterergebnisse und Rückgabe des gescuhten Attributs ------
-        result = []
+        #------ Auswertung der Filterergebnisse ------
+
         #Kleine Erklärung, wie der multiple Filter funktioniert:
         #Alles landet in der Liste puplis, also alles, was zu attr 1, 2, 3, ..., n passt.
         #Am Ende überprüfe ich nur die Duplikate und filter' diese raus. Wenn ein Element genau so oft vorkommt,
@@ -76,13 +76,8 @@ class XMLProcessing:
         dup = Counter(puplis)
         puplis = list([item for item in dup if dup[item] == len(list(f_attr))])
 
-        for elem in puplis:
-            for e in elem:
-                if e.attrib.get("name") == return_value:
-                    for var in e:
-                        result.append(str(var.text))
-        print(len(result))
-        return result
+        print(len(puplis))
+        return puplis
 
     def getWantedDataFromDataObject(dataObjects, returnValue):
         result = []
@@ -139,18 +134,30 @@ class XMLProcessing:
         print(test)
         return result
 
+    def getWebsiteOfDataObject(dataObject):
+        url = "https://cris.fau.de/converis/portal/"
+        dataObjectType = dataObject.attrib.get("type")
+        dataObjectID = dataObject.attrib.get("id")
+        suffix = "?auxfun=&lang=de_DE"
+        return url + dataObjectType + "/" + dataObjectID + suffix
+
+
 #===================================Renes Testwiese=========================================
 
 e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
 p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
 filter = ["srcAuthors", "publYear"]
 value = ["Sven", "2020"]
-print(XMLProcessing.filter(e, filter, value, "cfTitle"))
+filter_result = XMLProcessing.filter(e, filter, value)
+print(filter_result)
+print(XMLProcessing.getWantedDataFromDataObject(filter_result, "cfTitle"))
+for r in filter_result:
+    print(XMLProcessing.getWebsiteOfDataObject(r))
 #lc = XMLProcessing.getLastCreatedItems(e, 1000)
 #print(XMLProcessing.GetWantedDataFromDataObject(lc, "cfTitle"))
 #print(lc)
-x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
-XMLProcessing.getGraphData(e, 'publYear', 'srcAuthors', x_values, "Sven")
+#x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
+#XMLProcessing.getGraphData(e, 'publYear', 'srcAuthors', x_values, "Sven")
 #=============================================================================================
 
 
