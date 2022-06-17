@@ -45,24 +45,24 @@ class XMLProcessing:
 
     #Filtermethode, filtert nach Kategorien (f_attr) und Werten (f_value). Der Rückgabewert (return_value) ist ein Attribut
     #der Puplikationen, das zurückgegeben werden soll
-    def filter (tree, f_attr, f_value):
+    def filter(tree, f_attr, f_value):
         puplis = []
         #Für jede Kategorie und dem dazu passenden Wert wird der Filterprozess einmal durchlaufen
         for (attr, value) in zip(f_attr, f_value):
             #------ Auswahl aller Puplikationen, auf die der Filter passt ------
-            for elem in tree:   #tree = <DataObjects>
-                for e in elem:  #elem = <DataObject>
-                    if e.attrib.get("name") == attr:  #e = <Attribute>
-                        for var in e:   #var = <Data>
+            for data_object in tree:   #tree = <DataObjects>
+                for attribute in data_object:  #elem = <DataObject>
+                    if attribute.attrib.get("name") == attr:  #e = <Attribute>
+                        for data in attribute:   #var = <Data>
 
-                            if str(var.text).isdigit(): #Überprüfung, ob nummerische Werte verglichen werden
-                                if value == str(var.text):
+                            if str(data.text).isdigit(): #Überprüfung, ob nummerische Werte verglichen werden
+                                if value == str(data.text):
                                     #print("Zahl Filter")
-                                    puplis.append(elem) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
+                                    puplis.append(data_object) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
                             else:
-                                if value in str(var.text):
+                                if value in str(data.text):
                                     #print("Wort Filter")
-                                    puplis.append(elem) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
+                                    puplis.append(data_object) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
                                     #print(var.text)
 
 
@@ -79,17 +79,21 @@ class XMLProcessing:
         print(len(puplis))
         return puplis
 
-    def getWantedDataFromDataObject(dataObjects, returnValue):
+    #Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <dataObject>s zurück.
+    #Der Wert wird als String wiedergegeben
+    def get_wanted_data_from_data_object(dataObjects, returnValue):
         result = []
-        for elem in dataObjects:
-            for e in elem:
-                if e.attrib.get("name") == returnValue:
-                    for var in e:
-                        result.append(str(var.text))
+        for dataObj in dataObjects:
+            for attribute in dataObj:
+                if attribute.attrib.get("name") == returnValue:
+                    for data in attribute:
+                        result.append(str(data.text))
         #print(len(result))
         return result
 
-    def getLastCreatedItems(tree, lastDaysCount = 3, isPupl = True):
+    #Gibt die Puplikationen ODER Projekte zurück, die in den letzten "lastDaysCount" Tagen veröffentlicht wurden bzw abgeschlossen
+    #wurden. (Bei Pupl. veröffentlicht, bei Projekten abgeschlossen).
+    def get_last_created_items(tree, lastDaysCount = 3, isPupl = True):
         results = []
         dateFormat = "%Y-%m-%d"  # Im XML werden Datumseinträge im Format Jahr/Monat/Tag angegeben.
         today = datetime.today()
@@ -117,7 +121,12 @@ class XMLProcessing:
         print(len(results))
         return results
 
-    def getGraphData(tree, x_axis, y_axis, x__values, y_value):
+    #Parameter: tree = XML-Datei;
+    # x_axis = Datenwert, der sich ändern soll (z.B. Jahr)
+    # y_axis = Datenwert, der gleich bleiben soll (z.B. Autor)
+    # x__values = Die Werte, für die der y-Wert ausgewertet werden soll (z.B. [2019, 2020, 2021, 2022])
+    # y_value = Der Wert, der gleich bleibt (z.B. "Sven")
+    def get_graph_data(tree, x_axis, y_axis, x__values, y_value):
 
         result = []
         attr = [x_axis, y_axis]
@@ -127,14 +136,14 @@ class XMLProcessing:
         for x_val in x__values:
             values = [x_val, y_value]
             print(values)
-            amount = XMLProcessing.filter(tree, attr, values, "srcAuthors")
+            amount = XMLProcessing.filter(tree, attr, values)
             result.append((values, len(amount)))
             test += len(amount)
         print(result)
         print(test)
         return result
 
-    def getWebsiteOfDataObject(dataObject):
+    def get_website_of_data_object(dataObject):
         url = "https://cris.fau.de/converis/portal/"
         dataObjectType = dataObject.attrib.get("type")
         dataObjectID = dataObject.attrib.get("id")
@@ -150,14 +159,14 @@ filter = ["srcAuthors", "publYear"]
 value = ["Sven", "2020"]
 filter_result = XMLProcessing.filter(e, filter, value)
 print(filter_result)
-print(XMLProcessing.getWantedDataFromDataObject(filter_result, "cfTitle"))
+print(XMLProcessing.get_wanted_data_from_data_object(filter_result, "cfTitle"))
 for r in filter_result:
-    print(XMLProcessing.getWebsiteOfDataObject(r))
-#lc = XMLProcessing.getLastCreatedItems(e, 1000)
-#print(XMLProcessing.GetWantedDataFromDataObject(lc, "cfTitle"))
+    print(XMLProcessing.get_website_of_data_object(r))
+#lc = XMLProcessing.get_last_created_items(e, 1000)
+#print(XMLProcessing.get_wanted_data_from_data_object(lc, "cfTitle"))
 #print(lc)
 #x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
-#XMLProcessing.getGraphData(e, 'publYear', 'srcAuthors', x_values, "Sven")
+#XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
 #=============================================================================================
 
 
