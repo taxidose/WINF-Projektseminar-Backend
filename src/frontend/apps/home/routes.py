@@ -42,10 +42,14 @@ def tables():
 
 
     research_projects = []
-    research_projects.append({"title": "Zukunftsforschung im Supply Chain Management", "project_leader": "Christoph Küffner", "funder": "Dr. Hans Riegel-Stiftung", "project_start": " 04.05.2022"})
+    research_projects.append({"title": "Zukunftsforschung im Supply Chain Management", "project_leader": "Christoph Küffner", "funder": "Dr. Hans Riegel-Stiftung", "project_start": "04.05.2022"})
+    research_projects.append({"title": "Nürnberg und der globale Süden", "project_leader": "Prof. Dr. Simone Derix", "funder": "BMBF / Verbundprojekt", "project_start": "01.10.2022"})
+
 
     publications = []
     publications.append({"title": "The Non-Stop Disjoint Trajectories Problem", "author": "Hoch B, Liers F, Neumann S", "publish_year": 2020, "language": "Englisch"})
+    publications.append({"title": "Optimal actuator design via Brunovsky’s normal form", "author": "Geshkovski B, Zuazua Iriondo E", "publish_year": 2021, "language": "Englisch"})
+
 
     return render_template("home/tables.html", research_projects=research_projects, publications=publications)
 
