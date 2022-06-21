@@ -1,7 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="933530ba-233a-44d2-84af-746f6b2f5f87" name="Changes" comment="init commit" />
+    <list default="true" id="933530ba-233a-44d2-84af-746f6b2f5f87" name="Changes" comment="init commit">
+      <change afterPath="$PROJECT_DIR$/src/frontend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/WINF-Projektseminar-Backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WINF-Projektseminar-Backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/xml_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/xml_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/authentication/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/authentication/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/authentication/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/authentication/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/authentication/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/authentication/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/authentication/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/authentication/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/authentication/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/authentication/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/home/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/home/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/home/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/home/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/fonts/nucleo-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/fonts/nucleo-icons.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/gulpfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/core/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/core/bootstrap.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/core/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/core/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/core/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/core/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/Chart.extension.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/Chart.extension.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/bootstrap-notify.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/bootstrap-notify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/chartjs.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/chartjs.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/perfect-scrollbar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/perfect-scrollbar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/smooth-scrollbar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/plugins/smooth-scrollbar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/soft-ui-dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/soft-ui-dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/soft-ui-dashboard.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/js/soft-ui-dashboard.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/static/assets/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/static/assets/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/accounts/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/accounts/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/accounts/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/home/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/home/page-403.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/home/page-403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/home/page-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/home/page-404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/home/page-500.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/home/page-500.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/home/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/home/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/home/sign-in.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/home/sign-in.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/home/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/home/sign-up.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/home/tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/home/tables.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/fixed-plugin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/fixed-plugin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/footer-fullscreen.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/footer-fullscreen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/footer-rtl.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/footer-rtl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/navigation-fullscreen.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/navigation-fullscreen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/navigation-rtl.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/navigation-rtl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/navigation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/scripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/scripts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/sidebar-rtl.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/sidebar-rtl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/includes/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/includes/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/layouts/base-fullscreen.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/layouts/base-fullscreen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/layouts/base-rtl.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/layouts/base-rtl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/apps/templates/layouts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/templates/layouts/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/env.sample" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/env.sample" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/gunicorn-cfg.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/gunicorn-cfg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/log.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/log.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/nginx/appseed-app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/nginx/appseed-app.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/run.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,15 +88,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Python&quot;
-  }
-}</component>
-  <component name="RunManager">
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/frontend" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\taxi\PycharmProjects\WINF-Projektseminar-CRIS\src\frontend" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.run">
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="WINF-Projektseminar-Backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\taxi\PycharmProjects\WINF-Projektseminar-CRIS\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/frontend" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/frontend/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="xml_script" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="WINF-Projektseminar-Backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -57,6 +142,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.run" />
         <item itemvalue="Python.xml_script" />
         <item itemvalue="Python.xml_script" />
         <item itemvalue="Python.xml_script" />
@@ -108,8 +194,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
     <option name="LAST_COMMIT_MESSAGE" value="init commit" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WINF_Projektseminar_Backend$xml_script.coverage" NAME="xml_script Coverage Results" MODIFIED="1655495778599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/backend" />
   </component>
 </project>

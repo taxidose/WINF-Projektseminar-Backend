@@ -45,6 +45,7 @@ class XMLProcessing:
 
     #Filtermethode, filtert nach Kategorien (f_attr) und Werten (f_value). Der Rückgabewert (return_value) ist ein Attribut
     #der Puplikationen, das zurückgegeben werden soll
+    @staticmethod
     def filter(tree, f_attr, f_value):
         puplis = []
         #Für jede Kategorie und dem dazu passenden Wert wird der Filterprozess einmal durchlaufen
@@ -81,6 +82,7 @@ class XMLProcessing:
 
     #Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <dataObject>s zurück.
     #Der Wert wird als String wiedergegeben
+    @staticmethod
     def get_wanted_data_from_data_object(dataObjects, returnValue):
         result = []
         for dataObj in dataObjects:
@@ -93,6 +95,7 @@ class XMLProcessing:
 
     #Gibt die Puplikationen ODER Projekte zurück, die in den letzten "lastDaysCount" Tagen veröffentlicht wurden bzw abgeschlossen
     #wurden. (Bei Pupl. veröffentlicht, bei Projekten abgeschlossen).
+    @staticmethod
     def get_last_created_items(tree, lastDaysCount = 3, isPupl = True):
         results = []
         dateFormat = "%Y-%m-%d"  # Im XML werden Datumseinträge im Format Jahr/Monat/Tag angegeben.
@@ -126,6 +129,7 @@ class XMLProcessing:
     # y_axis = Datenwert, der gleich bleiben soll (z.B. Autor)
     # x__values = Die Werte, für die der y-Wert ausgewertet werden soll (z.B. [2019, 2020, 2021, 2022])
     # y_value = Der Wert, der gleich bleibt (z.B. "Sven")
+    @staticmethod
     def get_graph_data(tree, x_axis, y_axis, x__values, y_value):
 
         result = []
@@ -143,6 +147,7 @@ class XMLProcessing:
         print(test)
         return result
 
+    @staticmethod
     def get_website_of_data_object(dataObject):
         url = "https://cris.fau.de/converis/portal/"
         dataObjectType = dataObject.attrib.get("type")
@@ -151,19 +156,19 @@ class XMLProcessing:
         return url + dataObjectType + "/" + dataObjectID + suffix
 
 
-#===================================Renes Testwiese=========================================
-
-e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
-p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
-filter = ["srcAuthors", "publYear"]
-value = ["Sven", "2020"]
-filter_result = XMLProcessing.filter(e, filter, value)
-print(filter_result)
-print(XMLProcessing.get_wanted_data_from_data_object(filter_result, "cfTitle"))
-for r in filter_result:
-    print(XMLProcessing.get_website_of_data_object(r))
-#lc = XMLProcessing.get_last_created_items(e, 1000)
-#print(XMLProcessing.get_wanted_data_from_data_object(lc, "cfTitle"))
+# #===================================Renes Testwiese=========================================
+#
+# e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
+# p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
+# filter = ["srcAuthors", "publYear"]
+# value = ["Sven", "2020"]
+# filter_result = XMLProcessing.filter(e, filter, value)
+# print(filter_result)
+# print(XMLProcessing.get_wanted_data_from_data_object(filter_result, "cfTitle"))
+# for r in filter_result:
+#     print(XMLProcessing.get_website_of_data_object(r))
+# #lc = XMLProcessing.get_last_created_items(e, 1000)
+# #print(XMLProcessing.get_wanted_data_from_data_object(lc, "cfTitle"))
 #print(lc)
 #x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
 #XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
