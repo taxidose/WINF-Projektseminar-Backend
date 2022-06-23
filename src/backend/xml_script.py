@@ -3,6 +3,7 @@ from collections import Counter
 from datetime import datetime, timedelta
 import requests
 import xml.etree.ElementTree as ET
+import numpy as np
 
 SVEN_URL = r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Person/203395223/PERS_2_PUBL_1"
 ALL_WISO_PUBLICATIONS = r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PUBL_1"
@@ -150,6 +151,21 @@ class XMLProcessing:
         suffix = "?auxfun=&lang=de_DE"
         return url + dataObjectType + "/" + dataObjectID + suffix
 
+    #Gibt die Anzahl aller Einträge und die Wachstumsrate zurück
+    def get_metrics(tree):
+        count_dooku = len(tree.getchildren()) #Anzahl aller Dateneinträge von tree
+        #print(count_dooku)
+        currentYear = str(datetime.today().year)
+        lastyear = str(int(currentYear) - 1)
+        #print(currentYear + " " + lastyear)
+        count_last_year = len(XMLProcessing.filter(tree, ["publYear"], [lastyear])) #Anzahl an DatenEinträgen aus diesem Jahr
+        count_this_year = len(XMLProcessing.filter(tree, ["publYear"], [currentYear])) #Anzahl an DatenEinträgen aus letztem Jahr
+       # print(str(count_this_year) + " " + str(count_last_year))
+        growth = (count_this_year/ count_last_year) * 100
+        growth = str(float("{:.2f}".format(growth))) + "%"
+        print(growth)
+        return [count_dooku, growth]
+
 
 #===================================Renes Testwiese=========================================
 
@@ -159,14 +175,16 @@ filter = ["srcAuthors", "publYear"]
 value = ["Sven", "2020"]
 filter_result = XMLProcessing.filter(e, filter, value)
 print(filter_result)
-print(XMLProcessing.get_wanted_data_from_data_object(filter_result, "cfTitle"))
-for r in filter_result:
-    print(XMLProcessing.get_website_of_data_object(r))
+#print(XMLProcessing.get_wanted_data_from_data_object(filter_result, "cfTitle"))
+#for r in filter_result:
+#    print(XMLProcessing.get_website_of_data_object(r))
 #lc = XMLProcessing.get_last_created_items(e, 1000)
 #print(XMLProcessing.get_wanted_data_from_data_object(lc, "cfTitle"))
 #print(lc)
 #x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
 #XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
+
+print(XMLProcessing.get_metrics(e))
 #=============================================================================================
 
 
