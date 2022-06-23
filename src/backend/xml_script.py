@@ -77,18 +77,20 @@ class XMLProcessing:
         dup = Counter(puplis)
         puplis = list([item for item in dup if dup[item] == len(list(f_attr))])
 
-        print(len(puplis))
+        #print(len(puplis))
         return puplis
 
     #Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <dataObject>s zurück.
     #Der Wert wird als String wiedergegeben
-    def get_wanted_data_from_data_object(dataObjects, returnValue):
+    def get_wanted_data_from_data_object(dataObjects, returnValues):
         result = []
         for dataObj in dataObjects:
+            return_object = []
             for attribute in dataObj:
-                if attribute.attrib.get("name") == returnValue:
+                if attribute.attrib.get("name") in returnValues:
                     for data in attribute:
-                        result.append(str(data.text))
+                        return_object.append([attribute.attrib.get("name"), str(data.text)])
+            result.append(return_object)
         #print(len(result))
         return result
 
@@ -160,7 +162,7 @@ class XMLProcessing:
         #print(currentYear + " " + lastyear)
         count_last_year = len(XMLProcessing.filter(tree, ["publYear"], [lastyear])) #Anzahl an DatenEinträgen aus diesem Jahr
         count_this_year = len(XMLProcessing.filter(tree, ["publYear"], [currentYear])) #Anzahl an DatenEinträgen aus letztem Jahr
-       # print(str(count_this_year) + " " + str(count_last_year))
+        #print(str(count_this_year) + " " + str(count_last_year))
         growth = (count_this_year/ count_last_year) * 100
         growth = str(float("{:.2f}".format(growth))) + "%"
         print(growth)
@@ -171,20 +173,20 @@ class XMLProcessing:
 
 e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
 p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
-filter = ["srcAuthors", "publYear"]
-value = ["Sven", "2020"]
-filter_result = XMLProcessing.filter(e, filter, value)
-print(filter_result)
+#filter = ["srcAuthors", "publYear"]
+#value = ["Sven", "2020"]
+#filter_result = XMLProcessing.filter(e, filter, value)
+#print(filter_result)
 #print(XMLProcessing.get_wanted_data_from_data_object(filter_result, "cfTitle"))
 #for r in filter_result:
 #    print(XMLProcessing.get_website_of_data_object(r))
 #lc = XMLProcessing.get_last_created_items(e, 1000)
-#print(XMLProcessing.get_wanted_data_from_data_object(lc, "cfTitle"))
+#print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))
 #print(lc)
 #x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
 #XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
 
-print(XMLProcessing.get_metrics(e))
+#print(XMLProcessing.get_metrics(e))
 #=============================================================================================
 
 
