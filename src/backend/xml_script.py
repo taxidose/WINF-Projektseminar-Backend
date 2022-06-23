@@ -46,6 +46,7 @@ class XMLProcessing:
 
     #Filtermethode, filtert nach Kategorien (f_attr) und Werten (f_value). Der Rückgabewert (return_value) ist ein Attribut
     #der Puplikationen, das zurückgegeben werden soll
+    @staticmethod
     def filter(tree, f_attr, f_value):
         puplis = []
         #Für jede Kategorie und dem dazu passenden Wert wird der Filterprozess einmal durchlaufen
@@ -96,6 +97,7 @@ class XMLProcessing:
 
     #Gibt die Puplikationen ODER Projekte zurück, die in den letzten "lastDaysCount" Tagen veröffentlicht wurden bzw abgeschlossen
     #wurden. (Bei Pupl. veröffentlicht, bei Projekten abgeschlossen).
+    @staticmethod
     def get_last_created_items(tree, lastDaysCount = 3, isPupl = True):
         results = []
         dateFormat = "%Y-%m-%d"  # Im XML werden Datumseinträge im Format Jahr/Monat/Tag angegeben.
@@ -129,6 +131,7 @@ class XMLProcessing:
     # y_axis = Datenwert, der gleich bleiben soll (z.B. Autor)
     # x__values = Die Werte, für die der y-Wert ausgewertet werden soll (z.B. [2019, 2020, 2021, 2022])
     # y_value = Der Wert, der gleich bleibt (z.B. "Sven")
+    @staticmethod
     def get_graph_data(tree, x_axis, y_axis, x__values, y_value):
 
         result = []
@@ -146,6 +149,7 @@ class XMLProcessing:
         print(test)
         return result
 
+    @staticmethod
     def get_website_of_data_object(dataObject):
         url = "https://cris.fau.de/converis/portal/"
         dataObjectType = dataObject.attrib.get("type")
@@ -171,8 +175,8 @@ class XMLProcessing:
 
 #===================================Renes Testwiese=========================================
 
-e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
-p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
+#e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
+#p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
 #filter = ["srcAuthors", "publYear"]
 #value = ["Sven", "2020"]
 #filter_result = XMLProcessing.filter(e, filter, value)

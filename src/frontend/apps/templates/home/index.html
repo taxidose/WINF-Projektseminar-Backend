@@ -18,8 +18,10 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Anzahl Projekte</p>
                     <h5 class="font-weight-bolder mb-0">
-                      14
-                      <span class="text-success text-sm font-weight-bolder">60%</span>
+                      {{ data.number_projects }}
+
+                      <span class="text-success text-sm font-weight-bolder">{{ "+" if data.percent_rise_projects >= 0 else "-" }}{{ data.percent_rise_projects }}%</span>
+
                     </h5>
                   </div>
                 </div>
@@ -85,7 +87,9 @@
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Patente</p>
                     <h5 class="font-weight-bolder mb-0">
                       2
-                      <span class="text-success text-sm font-weight-bolder">0%</span>
+
+                      <span class="text-success text-sm font-weight-bolder">+1%</span>
+
                     </h5>
                   </div>
                 </div>
@@ -136,8 +140,6 @@
                 <h5 class="text-white font-weight-bolder mb-4 pt-2">Hinweis für Externe</h5>
                 <p class="text-white">Das WISO-Forschungsdashboard enthält kein vollständiges Abbild der Forschungsleistungen der WISO, sondern es werden nur Inhalte dargestellt, welche für die Veröffentlichung im Forschungsportal freigegeben wurden.</p>
               
-    
-                  
                 </a>
               </div>
             </div>
@@ -154,9 +156,8 @@
                   <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
                 </div>
               </div>
-              <h6 class="ms-2 mt-4 mb-0"> Active Users </h6>
-              <p class="text-sm ms-2"> (<span class="font-weight-bolder">+23%</span>) than last week </p>
-              <div class="container border-radius-lg">
+              <h6 class="ms-2 mt-4 mb-0"> Forschungsprojekte pro Monat (Startdatum) </h6>
+               <div class="container border-radius-lg">
                 <div class="row">
                   <div class="col-3 py-3 ps-0">
                     <div class="d-flex mb-2">
@@ -175,7 +176,7 @@
                           </g>
                         </svg>
                       </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Users</p>
+                      <p class="text-xs mt-1 mb-0 font-weight-bold">Projekte</p>
                     </div>
                     <h4 class="font-weight-bolder">36K</h4>
                     <div class="progress w-75">
@@ -201,7 +202,7 @@
                           </g>
                         </svg>
                       </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Clicks</p>
+                      <p class="text-xs mt-1 mb-0 font-weight-bold">Publikationen</p>
                     </div>
                     <h4 class="font-weight-bolder">2m</h4>
                     <div class="progress w-75">
@@ -225,7 +226,7 @@
                           </g>
                         </svg>
                       </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Sales</p>
+                      <p class="text-xs mt-1 mb-0 font-weight-bold">Kooperationen</p>
                     </div>
                     <h4 class="font-weight-bolder">435$</h4>
                     <div class="progress w-75">
@@ -250,7 +251,7 @@
                           </g>
                         </svg>
                       </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Items</p>
+                      <p class="text-xs mt-1 mb-0 font-weight-bold">Patente</p>
                     </div>
                     <h4 class="font-weight-bolder">43</h4>
                     <div class="progress w-75">
@@ -279,7 +280,7 @@
           </div>
         </div>
       </div>
-
+ <!--
       <div class="row my-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
           <div class="card">
@@ -306,6 +307,7 @@
                 </div>
               </div>
             </div>
+
             <div class="card-body px-0 pb-2">
               <div class="table-responsive">
                 <table class="table align-items-center mb-0">
@@ -619,15 +621,22 @@
                     <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
                     <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
                   </div>
+                  -->
+
                 </div>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
 
       {% include "includes/footer.html" %}
-
+<br/>
     </div>
 
 {% endblock content %}
