@@ -159,7 +159,9 @@ class XMLProcessing:
 
     #Gibt die Anzahl aller Einträge und die Wachstumsrate zurück
     def get_metrics(tree):
-        count_dooku = len(tree.getchildren()) #Anzahl aller Dateneinträge von tree
+        #count_dooku = len(tree.getchildren()) #Anzahl aller Dateneinträge von tree
+        count_dooku = tree.attrib.get("size")
+        print(count_dooku)
         #print(count_dooku)
         currentYear = str(datetime.today().year)
         lastyear = str(int(currentYear) - 1)
@@ -222,9 +224,9 @@ e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
 #x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
 #XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
 
-#print(XMLProcessing.get_metrics(e))
+print(XMLProcessing.get_metrics(e))
 
-XMLProcessing.get_all_keywords(e)
+#XMLProcessing.get_all_keywords(e)
 #=============================================================================================
 
 
