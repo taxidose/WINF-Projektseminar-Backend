@@ -172,10 +172,42 @@ class XMLProcessing:
         print(growth)
         return [count_dooku, growth]
 
+    def get_all_keywords(tree):
+        keys = XMLProcessing.get_wanted_data_from_data_object(tree, ["Keywords"])
+        keywords = []
+        for element in keys:
+            for subElement in element:
+                keywords.append(str(subElement[1]))
+
+        for i in range(0, 10):  #Ich habe keine Ahnung, warum, aber erst, wenn ich das mehrfach wiederhole, werden alle Nones entfernt
+            for element in keywords:
+                if element == 'None':
+                    keywords.remove((element))
+
+        keystring = ""
+        for element in keywords:
+            keystring += " " + element + ";"
+
+        keystring = keystring.replace(";;", ";")
+        keystring = keystring.replace(";", ",")
+        #print(keystring)
+        #print(keywords)
+        keywords = keystring.split(",")
+
+        final_keywords = []
+        for element in keywords:
+            temp = str(element)[1:]
+            final_keywords.append(temp)
+        #print(final_keywords)
+
+        final_keywords = list(dict.fromkeys(final_keywords))
+        #print(final_keywords)
+
+        return final_keywords
 
 #===================================Renes Testwiese=========================================
 
-#e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
+e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
 #p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
 #filter = ["srcAuthors", "publYear"]
 #value = ["Sven", "2020"]
@@ -191,6 +223,8 @@ class XMLProcessing:
 #XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
 
 #print(XMLProcessing.get_metrics(e))
+
+XMLProcessing.get_all_keywords(e)
 #=============================================================================================
 
 
