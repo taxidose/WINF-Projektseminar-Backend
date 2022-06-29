@@ -3,7 +3,6 @@ from collections import Counter
 from datetime import datetime, timedelta
 import requests
 import xml.etree.ElementTree as ET
-import numpy as np
 
 SVEN_URL = r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Person/203395223/PERS_2_PUBL_1"
 ALL_WISO_PUBLICATIONS = r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PUBL_1"
@@ -98,7 +97,7 @@ class XMLProcessing:
     #Gibt die Puplikationen ODER Projekte zurück, die in den letzten "lastDaysCount" Tagen veröffentlicht wurden bzw abgeschlossen
     #wurden. (Bei Pupl. veröffentlicht, bei Projekten abgeschlossen).
     @staticmethod
-    def get_last_created_items(tree, lastDaysCount = 3, isPupl = True):
+    def get_last_created_items(tree, lastDaysCount = 7, isPupl = True):
         results = []
         dateFormat = "%Y-%m-%d"  # Im XML werden Datumseinträge im Format Jahr/Monat/Tag angegeben.
         today = datetime.today()
