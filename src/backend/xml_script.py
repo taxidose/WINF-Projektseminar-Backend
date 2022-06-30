@@ -180,14 +180,16 @@ class XMLProcessing:
             for subElement in element:
                 keywords.append(str(subElement[1]))
 
-        for i in range(0, 10):  #Ich habe keine Ahnung, warum, aber erst, wenn ich das mehrfach wiederhole, werden alle Nones entfernt
-            for element in keywords:
-                if element == 'None':
-                    keywords.remove((element))
+        dummylist = keywords.copy()
+
+        for word in dummylist:
+            if word == 'None' or word == str(None):
+                keywords.remove(word)
+        #print(keywords)
 
         keystring = ""
-        for element in keywords:
-            keystring += " " + element + ";"
+        for e in keywords:
+            keystring += " " + e + ";"
 
         keystring = keystring.replace(";;", ";")
         keystring = keystring.replace(";", ",")
@@ -223,9 +225,9 @@ e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
 #x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
 #XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
 
-print(XMLProcessing.get_metrics(e))
+#print(XMLProcessing.get_metrics(e))
 
-#XMLProcessing.get_all_keywords(e)
+#print(XMLProcessing.get_all_keywords(e))
 #=============================================================================================
 
 

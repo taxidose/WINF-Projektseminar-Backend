@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="933530ba-233a-44d2-84af-746f6b2f5f87" name="Changes" comment="running; dummy data">
-      <change beforePath="$PROJECT_DIR$/src/frontend/apps/home/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/apps/home/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/WINF-Projektseminar-Backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WINF-Projektseminar-Backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/xml_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/xml_script.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,15 +29,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/frontend" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\taxi\PycharmProjects\WINF-Projektseminar-CRIS\src\frontend" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.run">
+  <component name="RunManager" selected="Python.xml_script">
     <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="WINF-Projektseminar-Backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -47,6 +52,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/frontend/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -80,8 +86,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run" />
         <item itemvalue="Python.xml_script" />
+        <item itemvalue="Python.run" />
         <item itemvalue="Python.xml_script" />
         <item itemvalue="Python.xml_script" />
         <item itemvalue="Python.xml_script" />
@@ -104,6 +110,13 @@
       <workItem from="1654870643004" duration="12199000" />
       <workItem from="1655116977870" duration="1023000" />
       <workItem from="1655118314180" duration="178000" />
+      <workItem from="1656095314348" duration="646000" />
+      <workItem from="1656266567341" duration="5679000" />
+      <workItem from="1656350771248" duration="854000" />
+      <workItem from="1656404421594" duration="2963000" />
+      <workItem from="1656440498785" duration="4042000" />
+      <workItem from="1656526258779" duration="2640000" />
+      <workItem from="1656589093347" duration="1784000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1655118474729</created>
@@ -147,5 +160,8 @@
     <MESSAGE value="init commit" />
     <MESSAGE value="running; dummy data" />
     <option name="LAST_COMMIT_MESSAGE" value="running; dummy data" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/WINF_Projektseminar_Backend$xml_script.coverage" NAME="xml_script Coverage Results" MODIFIED="1656605077787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/backend" />
   </component>
 </project>
