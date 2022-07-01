@@ -86,9 +86,9 @@ class XMLProcessing:
     @staticmethod
     def get_wanted_data_from_data_object(data_object, return_values):
         result = []
-        for dataObj in data_object:
+        for data_obj in data_object:
             return_object = []
-            for attribute in dataObj:
+            for attribute in data_obj:
                 if attribute.attrib.get("name") in return_values:
                     for data in attribute:
                         return_object.append([attribute.attrib.get("name"), str(data.text)])
@@ -101,17 +101,17 @@ class XMLProcessing:
     @staticmethod
     def get_last_created_items(tree, last_days_count=7, is_pupl=True):
         results = []
-        dateFormat = "%Y-%m-%d"  # Im XML werden Datumseinträge im Format Jahr/Monat/Tag angegeben.
+        date_format = "%Y-%m-%d"  # Im XML werden Datumseinträge im Format Jahr/Monat/Tag angegeben.
         today = datetime.today()
-        compareDate = today - timedelta(days=last_days_count)  # Heute - last_days_count Tage = compareDate
+        compare_date = today - timedelta(days=last_days_count)  # Heute - last_days_count Tage = compare_date
 
-        print(type(compareDate))
+        print(type(compare_date))
         if is_pupl:  # Für Puplikationen
             for child in tree:
                 # Vergleicht, ob die Puplikation im CRIS System nach 'last_days_count' Tagen erstellt wurde
-                createdOnDateString = child.attrib.get("createdOn").split('T')[0]
-                # Schaut, ob die Puplikation nach dem compareDate erstellt wurde
-                if datetime.strptime(createdOnDateString, dateFormat) >= compareDate:
+                created_on_date_string = child.attrib.get("createdOn").split('T')[0]
+                # Schaut, ob die Puplikation nach dem compare_date erstellt wurde
+                if datetime.strptime(created_on_date_string, date_format) >= compare_date:
                     results.append(child)
         else:  # Für Projekte
             for child in tree:
@@ -119,8 +119,8 @@ class XMLProcessing:
                     if attribute.attrib.get("name") == 'cfEndDate':
                         for data in attribute:
                             if data.text is not None \
-                                    and compareDate <= datetime.strptime(data.text, dateFormat) < today:
-                                print(datetime.strptime(data.text, dateFormat))
+                                    and compare_date <= datetime.strptime(data.text, date_format) < today:
+                                print(datetime.strptime(data.text, date_format))
                                 results.append(child)
 
         print(len(results))
@@ -152,10 +152,10 @@ class XMLProcessing:
     @staticmethod
     def get_website_of_data_object(data_object):
         url = "https://cris.fau.de/converis/portal/"
-        dataObjectType = data_object.attrib.get("type")
-        dataObjectID = data_object.attrib.get("id")
+        data_object_type = data_object.attrib.get("type")
+        data_object_id = data_object.attrib.get("id")
         suffix = "?auxfun=&lang=de_DE"
-        return url + dataObjectType + "/" + dataObjectID + suffix
+        return url + data_object_type + "/" + data_object_id + suffix
 
     # Gibt die Anzahl aller Einträge und die Wachstumsrate zurück
     @staticmethod
@@ -164,13 +164,13 @@ class XMLProcessing:
         count_dooku = tree.attrib.get("size")
         print(count_dooku)
         # print(count_dooku)
-        currentYear = str(datetime.today().year)
-        lastyear = str(int(currentYear) - 1)
-        # print(currentYear + " " + lastyear)
+        current_year = str(datetime.today().year)
+        last_year = str(int(current_year) - 1)
+        # print(current_year + " " + last_year)
         count_last_year = len(
-            XMLProcessing.filter(tree, ["publYear"], [lastyear]))  # Anzahl an DatenEinträgen aus diesem Jahr
+            XMLProcessing.filter(tree, ["publYear"], [last_year]))  # Anzahl an DatenEinträgen aus diesem Jahr
         count_this_year = len(
-            XMLProcessing.filter(tree, ["publYear"], [currentYear]))  # Anzahl an DatenEinträgen aus letztem Jahr
+            XMLProcessing.filter(tree, ["publYear"], [current_year]))  # Anzahl an DatenEinträgen aus letztem Jahr
         # print(str(count_this_year) + " " + str(count_last_year))
         growth = (count_this_year / count_last_year) * 100
         growth = str(float("{:.2f}".format(growth))) + "%"
@@ -182,8 +182,8 @@ class XMLProcessing:
         keys = XMLProcessing.get_wanted_data_from_data_object(tree, ["Keywords"])
         keywords = []
         for element in keys:
-            for subElement in element:
-                keywords.append(str(subElement[1]))
+            for sub_element in element:
+                keywords.append(str(sub_element[1]))
 
         dummylist = keywords.copy()
 
