@@ -43,89 +43,90 @@ class XMLProcessing:
                 pass
         return list(set(attribute_list))
 
-    #Filtermethode, filtert nach Kategorien (f_attr) und Werten (f_value). Der Rückgabewert (return_value) ist ein Attribut
-    #der Puplikationen, das zurückgegeben werden soll
+    # Filtermethode, filtert nach Kategorien (f_attr) und Werten (f_value). Der Rückgabewert (return_value) ist ein Attribut
+    # der Puplikationen, das zurückgegeben werden soll
     @staticmethod
     def filter(tree, f_attr, f_value):
         puplis = []
-        #Für jede Kategorie und dem dazu passenden Wert wird der Filterprozess einmal durchlaufen
+        # Für jede Kategorie und dem dazu passenden Wert wird der Filterprozess einmal durchlaufen
         for (attr, value) in zip(f_attr, f_value):
-            #------ Auswahl aller Puplikationen, auf die der Filter passt ------
-            for data_object in tree:   #tree = <DataObjects>
-                for attribute in data_object:  #elem = <DataObject>
-                    if attribute.attrib.get("name") == attr:  #e = <Attribute>
-                        for data in attribute:   #var = <Data>
+            # ------ Auswahl aller Puplikationen, auf die der Filter passt ------
+            for data_object in tree:  # tree = <DataObjects>
+                for attribute in data_object:  # elem = <DataObject>
+                    if attribute.attrib.get("name") == attr:  # e = <Attribute>
+                        for data in attribute:  # var = <Data>
 
-                            if str(data.text).isdigit(): #Überprüfung, ob nummerische Werte verglichen werden
+                            if str(data.text).isdigit():  # Überprüfung, ob nummerische Werte verglichen werden
                                 if value == str(data.text):
-                                    #print("Zahl Filter")
-                                    puplis.append(data_object) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
+                                    # print("Zahl Filter")
+                                    puplis.append(
+                                        data_object)  # Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
                             else:
                                 if value in str(data.text):
-                                    #print("Wort Filter")
-                                    puplis.append(data_object) #Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
-                                    #print(var.text)
+                                    # print("Wort Filter")
+                                    puplis.append(
+                                        data_object)  # Fügt alle Puplikationen, auf die der Filter zutrifft, einer Liste hinzu
+                                    # print(var.text)
 
+        # ------ Auswertung der Filterergebnisse ------
 
-        #------ Auswertung der Filterergebnisse ------
-
-        #Kleine Erklärung, wie der multiple Filter funktioniert:
-        #Alles landet in der Liste puplis, also alles, was zu attr 1, 2, 3, ..., n passt.
-        #Am Ende überprüfe ich nur die Duplikate und filter' diese raus. Wenn ein Element genau so oft vorkommt,
-        #wie es Attribute gibt, treffen alle Filter auf dieses Element zu.
-        #Wichtig hierbei, das ganze muss noch weiter getestet werden, konnte es bisher nur mit einem kleinen Testdatensatz testen.
+        # Kleine Erklärung, wie der multiple Filter funktioniert:
+        # Alles landet in der Liste puplis, also alles, was zu attr 1, 2, 3, ..., n passt.
+        # Am Ende überprüfe ich nur die Duplikate und filter' diese raus. Wenn ein Element genau so oft vorkommt,
+        # wie es Attribute gibt, treffen alle Filter auf dieses Element zu.
+        # Wichtig hierbei, das ganze muss noch weiter getestet werden, konnte es bisher nur mit einem kleinen Testdatensatz testen.
         dup = Counter(puplis)
         puplis = list([item for item in dup if dup[item] == len(list(f_attr))])
 
-        #print(len(puplis))
+        # print(len(puplis))
         return puplis
 
-    #Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <dataObject>s zurück.
-    #Der Wert wird als String wiedergegeben
-    def get_wanted_data_from_data_object(dataObjects, returnValues):
+    # Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <data_object>s zurück.
+    # Der Wert wird als String wiedergegeben
+    @staticmethod
+    def get_wanted_data_from_data_object(data_object, return_values):
         result = []
-        for dataObj in dataObjects:
+        for dataObj in data_object:
             return_object = []
             for attribute in dataObj:
-                if attribute.attrib.get("name") in returnValues:
+                if attribute.attrib.get("name") in return_values:
                     for data in attribute:
                         return_object.append([attribute.attrib.get("name"), str(data.text)])
             result.append(return_object)
-        #print(len(result))
+        # print(len(result))
         return result
 
-    #Gibt die Puplikationen ODER Projekte zurück, die in den letzten "lastDaysCount" Tagen veröffentlicht wurden bzw abgeschlossen
-    #wurden. (Bei Pupl. veröffentlicht, bei Projekten abgeschlossen).
+    # Gibt die Puplikationen ODER Projekte zurück, die in den letzten "last_days_count" Tagen veröffentlicht wurden bzw abgeschlossen
+    # wurden. (Bei Pupl. veröffentlicht, bei Projekten abgeschlossen).
     @staticmethod
-    def get_last_created_items(tree, lastDaysCount = 7, isPupl = True):
+    def get_last_created_items(tree, last_days_count=7, is_pupl=True):
         results = []
         dateFormat = "%Y-%m-%d"  # Im XML werden Datumseinträge im Format Jahr/Monat/Tag angegeben.
         today = datetime.today()
-        compareDate = today - timedelta(days=lastDaysCount)  # Heute - lastDaysCount Tage = compareDate
+        compareDate = today - timedelta(days=last_days_count)  # Heute - last_days_count Tage = compareDate
 
         print(type(compareDate))
-        if isPupl:  #Für Puplikationen
+        if is_pupl:  # Für Puplikationen
             for child in tree:
-                #Vergleicht, ob die Puplikation im CRIS System nach 'lastDaysCount' Tagen erstellt wurde
+                # Vergleicht, ob die Puplikation im CRIS System nach 'last_days_count' Tagen erstellt wurde
                 createdOnDateString = child.attrib.get("createdOn").split('T')[0]
-                #Schaut, ob die Puplikation nach dem compareDate erstellt wurde
+                # Schaut, ob die Puplikation nach dem compareDate erstellt wurde
                 if datetime.strptime(createdOnDateString, dateFormat) >= compareDate:
                     results.append(child)
-        else:   #Für Projekte
+        else:  # Für Projekte
             for child in tree:
                 for attribute in child:
                     if attribute.attrib.get("name") == 'cfEndDate':
                         for data in attribute:
                             if data.text is not None \
-                                    and datetime.strptime(data.text, dateFormat) >= compareDate \
-                                    and datetime.strptime(data.text, dateFormat) < today:
+                                    and compareDate <= datetime.strptime(data.text, dateFormat) < today:
                                 print(datetime.strptime(data.text, dateFormat))
                                 results.append(child)
 
         print(len(results))
         return results
 
-    #Parameter: tree = XML-Datei;
+    # Parameter: tree = XML-Datei;
     # x_axis = Datenwert, der sich ändern soll (z.B. Jahr)
     # y_axis = Datenwert, der gleich bleiben soll (z.B. Autor)
     # x__values = Die Werte, für die der y-Wert ausgewertet werden soll (z.B. [2019, 2020, 2021, 2022])
@@ -149,30 +150,34 @@ class XMLProcessing:
         return result
 
     @staticmethod
-    def get_website_of_data_object(dataObject):
+    def get_website_of_data_object(data_object):
         url = "https://cris.fau.de/converis/portal/"
-        dataObjectType = dataObject.attrib.get("type")
-        dataObjectID = dataObject.attrib.get("id")
+        dataObjectType = data_object.attrib.get("type")
+        dataObjectID = data_object.attrib.get("id")
         suffix = "?auxfun=&lang=de_DE"
         return url + dataObjectType + "/" + dataObjectID + suffix
 
-    #Gibt die Anzahl aller Einträge und die Wachstumsrate zurück
+    # Gibt die Anzahl aller Einträge und die Wachstumsrate zurück
+    @staticmethod
     def get_metrics(tree):
-        #count_dooku = len(tree.getchildren()) #Anzahl aller Dateneinträge von tree
+        # count_dooku = len(tree.getchildren()) #Anzahl aller Dateneinträge von tree
         count_dooku = tree.attrib.get("size")
         print(count_dooku)
-        #print(count_dooku)
+        # print(count_dooku)
         currentYear = str(datetime.today().year)
         lastyear = str(int(currentYear) - 1)
-        #print(currentYear + " " + lastyear)
-        count_last_year = len(XMLProcessing.filter(tree, ["publYear"], [lastyear])) #Anzahl an DatenEinträgen aus diesem Jahr
-        count_this_year = len(XMLProcessing.filter(tree, ["publYear"], [currentYear])) #Anzahl an DatenEinträgen aus letztem Jahr
-        #print(str(count_this_year) + " " + str(count_last_year))
-        growth = (count_this_year/ count_last_year) * 100
+        # print(currentYear + " " + lastyear)
+        count_last_year = len(
+            XMLProcessing.filter(tree, ["publYear"], [lastyear]))  # Anzahl an DatenEinträgen aus diesem Jahr
+        count_this_year = len(
+            XMLProcessing.filter(tree, ["publYear"], [currentYear]))  # Anzahl an DatenEinträgen aus letztem Jahr
+        # print(str(count_this_year) + " " + str(count_last_year))
+        growth = (count_this_year / count_last_year) * 100
         growth = str(float("{:.2f}".format(growth))) + "%"
         print(growth)
         return [count_dooku, growth]
 
+    @staticmethod
     def get_all_keywords(tree):
         keys = XMLProcessing.get_wanted_data_from_data_object(tree, ["Keywords"])
         keywords = []
@@ -185,7 +190,7 @@ class XMLProcessing:
         for word in dummylist:
             if word == 'None' or word == str(None):
                 keywords.remove(word)
-        #print(keywords)
+        # print(keywords)
 
         keystring = ""
         for e in keywords:
@@ -193,42 +198,43 @@ class XMLProcessing:
 
         keystring = keystring.replace(";;", ";")
         keystring = keystring.replace(";", ",")
-        #print(keystring)
-        #print(keywords)
+        # print(keystring)
+        # print(keywords)
         keywords = keystring.split(",")
 
         final_keywords = []
         for element in keywords:
             temp = str(element)[1:]
             final_keywords.append(temp)
-        #print(final_keywords)
+        # print(final_keywords)
 
         final_keywords = list(dict.fromkeys(final_keywords))
-        #print(final_keywords)
+        # print(final_keywords)
 
         return final_keywords
 
-#===================================Renes Testwiese=========================================
+
+# ===================================Renes Testwiese=========================================
 
 e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
-#p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
-#filter = ["srcAuthors", "publYear"]
-#value = ["Sven", "2020"]
-#filter_result = XMLProcessing.filter(e, filter, value)
-#print(filter_result)
-#print(XMLProcessing.get_wanted_data_from_data_object(filter_result, "cfTitle"))
-#for r in filter_result:
+# p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
+# filter = ["srcAuthors", "publYear"]
+# value = ["Sven", "2020"]
+# filter_result = XMLProcessing.filter(e, filter, value)
+# print(filter_result)
+# print(XMLProcessing.get_wanted_data_from_data_object(filter_result, "cfTitle"))
+# for r in filter_result:
 #    print(XMLProcessing.get_website_of_data_object(r))
-#lc = XMLProcessing.get_last_created_items(e, 1000)
-#print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))
-#print(lc)
-#x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
-#XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
+# lc = XMLProcessing.get_last_created_items(e, 1000)
+# print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))
+# print(lc)
+# x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
+# XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
 
-#print(XMLProcessing.get_metrics(e))
+# print(XMLProcessing.get_metrics(e))
 
-#print(XMLProcessing.get_all_keywords(e))
-#=============================================================================================
+# print(XMLProcessing.get_all_keywords(e))
+# =============================================================================================
 
 
 # XMLProcessor = XMLProcessing()
