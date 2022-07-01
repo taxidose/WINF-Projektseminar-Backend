@@ -9,6 +9,12 @@ ALL_WISO_PUBLICATIONS = r"https://cris.fau.de/ws-cached/public/infoobject/getaut
 ALL_WISO_PROJECTS = r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PROJ_1"
 
 
+MAPPING_XML_FRONTEND = {"cfTitle": "title",
+                        "srcAuthors": "author",
+                        "publYear": "publish_year",
+                        "Language": "language"}
+
+
 class XMLProcessing:
     def __init__(self, *, xml_path=None, xml_url=None, xml_url_txt_path=None):
         self.xml_path = xml_path
@@ -91,7 +97,7 @@ class XMLProcessing:
             for attribute in data_obj:
                 if attribute.attrib.get("name") in return_values:
                     for data in attribute:
-                        return_object[attribute.attrib.get("name")] = str(data.text)
+                        return_object[MAPPING_XML_FRONTEND[attribute.attrib.get("name")]] = str(data.text)
             result.append(return_object)
         # print(len(result))
         return result
@@ -226,7 +232,7 @@ e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
 # for r in filter_result:
 #    print(XMLProcessing.get_website_of_data_object(r))
 # lc = XMLProcessing.get_last_created_items(e, 1000)
-print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))
+print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))  # TODO: len == 100
 # print(lc)
 # x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
 # XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
