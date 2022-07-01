@@ -87,11 +87,11 @@ class XMLProcessing:
     def get_wanted_data_from_data_object(data_object, return_values):
         result = []
         for data_obj in data_object:
-            return_object = []
+            return_object = {}
             for attribute in data_obj:
                 if attribute.attrib.get("name") in return_values:
                     for data in attribute:
-                        return_object.append([attribute.attrib.get("name"), str(data.text)])
+                        return_object[attribute.attrib.get("name")] = str(data.text)
             result.append(return_object)
         # print(len(result))
         return result
@@ -226,7 +226,7 @@ e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
 # for r in filter_result:
 #    print(XMLProcessing.get_website_of_data_object(r))
 # lc = XMLProcessing.get_last_created_items(e, 1000)
-# print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))
+print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))
 # print(lc)
 # x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
 # XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
