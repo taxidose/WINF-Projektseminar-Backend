@@ -4,15 +4,18 @@ from datetime import datetime, timedelta
 import requests
 import xml.etree.ElementTree as ET
 
-SVEN_URL = r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Person/203395223/PERS_2_PUBL_1"
-ALL_WISO_PUBLICATIONS = r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PUBL_1"
-ALL_WISO_PROJECTS = r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PROJ_1"
+URLs = {
+    "SVEN_URL": r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Person/203395223/PERS_2_PUBL_1",
+    "ALL_WISO_PUBLICATIONS": r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PUBL_1",
+    "ALL_WISO_PROJECTS": r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PROJ_1"
+}
 
-
-MAPPING_XML_FRONTEND = {"cfTitle": "title",
-                        "srcAuthors": "author",
-                        "publYear": "publish_year",
-                        "Language": "language"}
+MAPPING_XML_FRONTEND = {
+    "cfTitle": "title",
+    "srcAuthors": "author",
+    "publYear": "publish_year",
+    "Language": "language"
+}
 
 
 class XMLProcessing:
@@ -222,8 +225,8 @@ class XMLProcessing:
 
 # ===================================Renes Testwiese=========================================
 
-e = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PUBLICATIONS)
-# p = XMLProcessing.get_xml_data(xml_url=ALL_WISO_PROJECTS)
+e = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
+# p = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"])
 # filter = ["srcAuthors", "publYear"]
 # value = ["Sven", "2020"]
 # filter_result = XMLProcessing.filter(e, filter, value)
@@ -244,11 +247,11 @@ print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", 
 
 
 # XMLProcessor = XMLProcessing()
-# data_sven = XMLProcessor.get_xml_data(xml_url=SVEN_URL)
+# data_sven = XMLProcessor.get_xml_data(xml_url=URLs["SVEN_URL"])
 # all_attributes_sven = XMLProcessor.get_all_attributes_names(data_sven)
 #
-# all_wiso_projects = XMLProcessor.get_xml_data(xml_url=ALL_WISO_PROJECTS)
-# all_wiso_publications = XMLProcessor.get_all_attributes_names(xml_url=ALL_WISO_PUBLICATIONS)
+# all_wiso_projects = XMLProcessor.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"})
+# all_wiso_publications = XMLProcessor.get_all_attributes_names(xml_url=URLs["ALL_WISO_PUBLICATIONS"})
 #
 # print(all_attributes)
 # print(f"Anzahl Attribute: {len(all_attributes)}")
