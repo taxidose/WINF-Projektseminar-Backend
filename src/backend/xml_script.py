@@ -154,7 +154,7 @@ class XMLProcessing:
         url = "https://cris.fau.de/converis/portal/"
         data_object_type = data_object.attrib.get("type")
         data_object_id = data_object.attrib.get("id")
-        suffix = "?auxfun=&lang=de_DE"
+        suffix = "?auxfun=&lang=de_DE"  # TODO: englische sprache ein problem?
         return url + data_object_type + "/" + data_object_id + suffix
 
     # Gibt die Anzahl aller Einträge und die Wachstumsrate zurück
