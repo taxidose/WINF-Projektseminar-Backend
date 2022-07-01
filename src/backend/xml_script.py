@@ -225,7 +225,7 @@ class XMLProcessing:
 
 # ===================================Renes Testwiese=========================================
 
-e = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
+#e = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
 # p = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"])
 # filter = ["srcAuthors", "publYear"]
 # value = ["Sven", "2020"]
@@ -235,7 +235,7 @@ e = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
 # for r in filter_result:
 #    print(XMLProcessing.get_website_of_data_object(r))
 # lc = XMLProcessing.get_last_created_items(e, 1000)
-print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))  # TODO: len == 100
+#print(XMLProcessing.get_wanted_data_from_data_object(e, ["cfTitle", "publYear", "srcAuthors"]))  # TODO: len == 100
 # print(lc)
 # x_values = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
 # XMLProcessing.get_graph_data(e, 'publYear', 'srcAuthors', x_values, "Sven")
