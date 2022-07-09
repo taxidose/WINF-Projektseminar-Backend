@@ -93,7 +93,7 @@ class XMLProcessing:
     # Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <data_object>s zurück.
     # Der Wert wird als String wiedergegeben
     @staticmethod
-    def get_wanted_data_from_data_object(data_object, return_values):
+    def get_wanted_data_from_data_object(data_object, return_values, URL = False):
         result = []
         for data_obj in data_object:
             return_object = {}
@@ -101,7 +101,10 @@ class XMLProcessing:
                 if attribute.attrib.get("name") in return_values:
                     for data in attribute:
                         return_object[MAPPING_XML_FRONTEND[attribute.attrib.get("name")]] = str(data.text)
+            if URL == True:
+                return_object["URL"] = XMLProcessing.get_website_of_data_object(data_obj)
             result.append(return_object)
+            #print(return_object)
         # print(len(result))
         return result
 
@@ -225,7 +228,7 @@ class XMLProcessing:
 
 # ===================================Renes Testwiese=========================================
 
-#e = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
+e = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
 # p = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"])
 # filter = ["srcAuthors", "publYear"]
 # value = ["Sven", "2020"]
@@ -243,6 +246,8 @@ class XMLProcessing:
 # print(XMLProcessing.get_metrics(e))
 
 # print(XMLProcessing.get_all_keywords(e))
+
+#print(XMLProcessing.get_wanted_data_from_data_object(e, ["srcAuthors", "publYear"], True))
 # =============================================================================================
 
 
