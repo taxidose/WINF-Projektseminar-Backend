@@ -5,16 +5,29 @@ import requests
 import xml.etree.ElementTree as ET
 
 URLs = {
-    "SVEN_URL": r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Person/203395223/PERS_2_PUBL_1",
-    "ALL_WISO_PUBLICATIONS": r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PUBL_1",
-    "ALL_WISO_PROJECTS": r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PROJ_1"
+    "SVEN_URL":
+        r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Person/203395223/PERS_2_PUBL_1",
+
+    "ALL_WISO_PUBLICATIONS":
+        r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PUBL_1",
+
+    "ALL_WISO_PROJECTS":
+        r"https://cris.fau.de/ws-cached/public/infoobject/getautorelated/Organisation/105979734/ORGA_2_PROJ_1"
 }
 
 MAPPING_XML_FRONTEND = {
+    # "Name from XML file": "HTML template variable name"
     "cfTitle": "title",
     "srcAuthors": "author",
     "publYear": "publish_year",
-    "Language": "language"
+    "Language": "language",
+    "Keywords": "keywords",
+    "relPersIDlead": "project_leader",
+    "funderlink": "funder",
+    "Project Typ": "project_type",
+    "cfStartDate": "project_start",
+    "cfEndDate": "project_end"
+    #TODO: refactor as enum & switch key and value probably better cause publs_selected_attribute etc. in routes.py
 }
 
 
@@ -92,11 +105,11 @@ class XMLProcessing:
 
     # Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <data_object>s zurück.
     # Der Wert wird als String wiedergegeben
-    @staticmethod
-    def get_wanted_data_from_data_object(data_object, return_values):
+
+    def get_wanted_data_from_data_object(self, data_object, return_values):
         result = []
         for data_obj in data_object:
-            return_object = {}
+            return_object = {"URL": self.get_website_of_data_object(data_obj)}
             for attribute in data_obj:
                 if attribute.attrib.get("name") in return_values:
                     for data in attribute:
@@ -158,12 +171,13 @@ class XMLProcessing:
         print(test)
         return result
 
+
     @staticmethod
     def get_website_of_data_object(data_object):
         url = "https://cris.fau.de/converis/portal/"
         data_object_type = data_object.attrib.get("type")
         data_object_id = data_object.attrib.get("id")
-        suffix = "?auxfun=&lang=de_DE"  # TODO: englische sprache ein problem?
+        suffix = "?auxfun=&lang=de_DE"
         return url + data_object_type + "/" + data_object_id + suffix
 
     # Gibt die Anzahl aller Einträge und die Wachstumsrate zurück
