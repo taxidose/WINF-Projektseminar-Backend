@@ -105,11 +105,11 @@ class XMLProcessing:
 
     # Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <data_object>s zurück.
     # Der Wert wird als String wiedergegeben
-
-    def get_wanted_data_from_data_object(self, data_object, return_values):
+    @staticmethod
+    def get_wanted_data_from_data_object(data_object, return_values):
         result = []
         for data_obj in data_object:
-            return_object = {"URL": self.get_website_of_data_object(data_obj)}
+            return_object = {"URL": XMLProcessing.get_website_of_data_object(data_obj)}
             for attribute in data_obj:
                 if attribute.attrib.get("name") in return_values:
                     for data in attribute:

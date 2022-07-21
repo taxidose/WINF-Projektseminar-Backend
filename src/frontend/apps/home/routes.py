@@ -23,7 +23,7 @@ def index():
     xml_data_all_wiso_projects = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"])
     selected_xml_attributes = ["relPersIDlead", "cfTitle", "funderlink", "Project Typ", "cfStartDate", "cfEndDate"]
     filtered_data_all_wiso_projects = XMLProcessing.get_wanted_data_from_data_object(xml_data_all_wiso_projects,
-                                                                                     selected_xml_attributes)  # TODO: self?
+                                                                                     selected_xml_attributes)
 
     return render_template('home/index.html',
                            publications=json.dumps(filtered_data_all_wiso_publs),
@@ -38,7 +38,7 @@ def research_projects_table():
     xml_data_all_wiso_projects = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"])
     selected_xml_attributes = ["relPersIDlead", "cfTitle", "funderlink", "Project Typ", "cfStartDate", "cfEndDate"]
     filtered_data_all_wiso_projects = XMLProcessing.get_wanted_data_from_data_object(xml_data_all_wiso_projects,
-                                                                                     selected_xml_attributes) #TODO: self?
+                                                                                     selected_xml_attributes)
 
     return render_template("home/tables.html",
                            research_projects=filtered_data_all_wiso_projects)
@@ -52,7 +52,7 @@ def publications_table():
     xml_data_all_wiso_publs = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
     selected_xml_attributes = ["cfTitle", "publYear", "srcAuthors", "Language"]
     filtered_data_all_wiso_publs = XMLProcessing.get_wanted_data_from_data_object(xml_data_all_wiso_publs,
-                                                                                  selected_xml_attributes) #TODO: self?
+                                                                                  selected_xml_attributes)
 
     return render_template("home/tables2.html",
                            publications=filtered_data_all_wiso_publs)
