@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="933530ba-233a-44d2-84af-746f6b2f5f87" name="Changes" comment="running; dummy data">
+      <change beforePath="$PROJECT_DIR$/.idea/WINF-Projektseminar-Backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WINF-Projektseminar-Backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/backend/xml_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/xml_script.py" afterDir="false" />
     </list>
@@ -115,12 +117,6 @@
       <workItem from="1656440498785" duration="4042000" />
       <workItem from="1656526258779" duration="2640000" />
       <workItem from="1656589093347" duration="1784000" />
-      <workItem from="1657733068159" duration="1277000" />
-      <workItem from="1657883112948" duration="4469000" />
-      <workItem from="1658177411554" duration="5811000" />
-      <workItem from="1658245998304" duration="1964000" />
-      <workItem from="1658423695134" duration="1403000" />
-      <workItem from="1658602208616" duration="131000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1655118474729</created>
