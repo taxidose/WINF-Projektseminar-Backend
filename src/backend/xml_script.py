@@ -106,14 +106,16 @@ class XMLProcessing:
     # Gibt den gewollten Wert (returnValue) aus einer beliebig langen Liste (oder was auch immer) von <data_object>s zurück.
     # Der Wert wird als String wiedergegeben
     @staticmethod
-    def get_wanted_data_from_data_object(data_object, return_values):
+    def get_wanted_data_from_data_object(data_object, return_values, URL = False):
         result = []
         for data_obj in data_object:
-            return_object = {"URL": XMLProcessing.get_website_of_data_object(data_obj)}
             for attribute in data_obj:
                 if attribute.attrib.get("name") in return_values:
                     for data in attribute:
                         return_object[MAPPING_XML_FRONTEND[attribute.attrib.get("name")]] = str(data.text)
+            if URL == True:
+                return_object["URL"] = XMLProcessing.get_website_of_data_object(data_obj)
+
             result.append(return_object)
         # print(len(result))
         return result
@@ -154,14 +156,14 @@ class XMLProcessing:
     # x__values = Die Werte, für die der y-Wert ausgewertet werden soll (z.B. [2019, 2020, 2021, 2022])
     # y_value = Der Wert, der gleich bleibt (z.B. "Sven")
     @staticmethod
-    def get_graph_data(tree, x_axis, y_axis, x__values, y_value):
+    def get_graph_data(tree, x_axis, y_axis, x_values, y_value):
 
         result = []
         attr = [x_axis, y_axis]
         test = 0
         print(attr)
 
-        for x_val in x__values:
+        for x_val in x_values:
             values = [x_val, y_value]
             print(values)
             amount = XMLProcessing.filter(tree, attr, values)
