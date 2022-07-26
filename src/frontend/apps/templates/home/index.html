@@ -8,26 +8,43 @@
 {% block content %}
 
     <div class="container-fluid py-4">
+<div class="col-xl-12 col-sm-3 mb-s-1 mb-1">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-9">
+                  <div class="numbers">
+                <select id="cardfilter" style="float: left; margin-top: 15px; margin-left: 3px;">
+                      <option value="All">Alle</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                </select>
+                <p style="display: inline-block; margin-left: 10px; margin-top: 15px;">Filter nach Jahr</p>
+
+</div>
+                    </div>
 
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card" style="border: 1px solid #D3D3D3;">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Anzahl Projekte</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{ data.number_projects }}
-
-                      <span class="text-success text-sm font-weight-bolder">{{ "+" if data.percent_rise_projects >= 0 else "-" }}{{ data.percent_rise_projects }}%</span>
+                      <div id="number_projects"></div>
 
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-folder-17 text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -35,21 +52,20 @@
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card" style="border: 1px solid #D3D3D3;">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Anzahl Publikationen</p>
                     <h5 class="font-weight-bolder mb-0">
-                      7
-                      <span class="text-success text-sm font-weight-bolder">+30%</span>
+                      <div id="number_pub"></div>
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-book-bookmark text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -57,15 +73,37 @@
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card" style="border: 1px solid #D3D3D3;">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Kooperationen</p>
                     <h5 class="font-weight-bolder mb-0">
-                      3
-                      <span class="text-danger text-sm font-weight-bolder">-30%</span>
+                      -
+
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                    <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+          <div class="card" style="border: 1px solid #D3D3D3;">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Patente</p>
+                    <h5 class="font-weight-bolder mb-0">
+                      -
+
                     </h5>
                   </div>
                 </div>
@@ -78,56 +116,63 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Patente</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      2
+      </div>
 
-                      <span class="text-success text-sm font-weight-bolder">+1%</span>
-
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+
         </div>
-      </div>
+
+
+
+
+
 
       <div class="row mt-4">
-        <div class="col-lg-7 mb-lg-0 mb-4">
+
+
+
+
+
+
+
+
+                     <div class="col-lg-7 mb-lg-0 mb-1">
           <div class="card">
             <div class="card-body p-3">
+              <h6 style="margin: 10px;">Anzahl Forschungsprojekte pro Projekttyp</h6>
+               <select id="chartType3" style="float: left; margin-top: 11px; margin-left: 9px;">
+                      <option value="All">Alle</option>
+                      <option value="2022" >2022</option>
+                      <option value="2021" >2021</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+
+                </select>
+                <p style="display: inline-block; margin-left: 10px; margin-top: 11px;">Filter nach Jahr</p>
               <div class="row">
-                <div class="col-lg-6">
-                  <div class="d-flex flex-column h-100">
-                    <p class="mb-1 pt-2 text-bold">Aktuelle Themen</p>
-                    <h5 class="font-weight-bolder">FAU #1 Innovator</h5>
-                    <p class="mb-5">Die FAU ist die innovativiste Universität in Deutschland</p>
-                    <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                      Mehr lesen
-                      <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-                  <div class="bg-gradient-primary border-radius-lg h-100">
-                    <img src="{{ config.ASSETS_ROOT }}/img/shapes/waves-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
-                    <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                      <img class="w-100 position-relative z-index-2 pt-4" src="{{ config.ASSETS_ROOT }}/img/illustrations/rocket-white.png" alt="rocket">
-                    </div>
-                  </div>
-                </div>
+
+
+
+                   <canvas id="chart-pie" class="chart-canvas" height="350"></canvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               </div>
             </div>
           </div>
@@ -137,9 +182,10 @@
             <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('{{ config.ASSETS_ROOT }}/img/ivancik.jpg');">
               <span class="mask bg-gradient-dark"></span>
               <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                <h5 class="text-white font-weight-bolder mb-4 pt-2">Hinweis für Externe</h5>
+                <h5 class="text-white font-weight-bolder mb-4 pt-2">Hinweis</h5>
                 <p class="text-white">Das WISO-Forschungsdashboard enthält kein vollständiges Abbild der Forschungsleistungen der WISO, sondern es werden nur Inhalte dargestellt, welche für die Veröffentlichung im Forschungsportal freigegeben wurden.</p>
-              
+                <p class="text-white">Des Weiteren  wird derzeit nur eine Teilmenge der gesamten Daten angezeigt.</p>
+                  <p class="text-white">Die Daten für Kooperationen und Patente sind derzeit nicht verfügbar und werden deshalb als "-" angezeigt.</p>
                 </a>
               </div>
             </div>
@@ -147,524 +193,305 @@
         </div>
       </div>
 
+
+
+
+
+
+
+
       <div class="row mt-4">
-        <div class="col-lg-5 mb-lg-0 mb-4">
-          <div class="card z-index-2">
-            <div class="card-body p-3">
-              <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
-                <div class="chart">
-                  <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-              <h6 class="ms-2 mt-4 mb-0"> Forschungsprojekte pro Monat (Startdatum) </h6>
-               <div class="container border-radius-lg">
-                <div class="row">
-                  <div class="col-3 py-3 ps-0">
-                    <div class="d-flex mb-2">
-                      <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="10px" height="10px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>document</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(154.000000, 300.000000)">
-                                  <path class="color-background" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z" opacity="0.603585379"></path>
-                                  <path class="color-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Projekte</p>
-                    </div>
-                    <h4 class="font-weight-bolder">36K</h4>
-                    <div class="progress w-75">
-                      <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-3 py-3 ps-0">
-                    <div class="d-flex mb-2">
-                      <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="10px" height="10px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>spaceship</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-1720.000000, -592.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(4.000000, 301.000000)">
-                                  <path class="color-background" d="M39.3,0.706666667 C38.9660984,0.370464027 38.5048767,0.192278529 38.0316667,0.216666667 C14.6516667,1.43666667 6.015,22.2633333 5.93166667,22.4733333 C5.68236407,23.0926189 5.82664679,23.8009159 6.29833333,24.2733333 L15.7266667,33.7016667 C16.2013871,34.1756798 16.9140329,34.3188658 17.535,34.065 C17.7433333,33.98 38.4583333,25.2466667 39.7816667,1.97666667 C39.8087196,1.50414529 39.6335979,1.04240574 39.3,0.706666667 Z M25.69,19.0233333 C24.7367525,19.9768687 23.3029475,20.2622391 22.0572426,19.7463614 C20.8115377,19.2304837 19.9992882,18.0149658 19.9992882,16.6666667 C19.9992882,15.3183676 20.8115377,14.1028496 22.0572426,13.5869719 C23.3029475,13.0710943 24.7367525,13.3564646 25.69,14.31 C26.9912731,15.6116662 26.9912731,17.7216672 25.69,19.0233333 L25.69,19.0233333 Z"></path>
-                                  <path class="color-background" d="M1.855,31.4066667 C3.05106558,30.2024182 4.79973884,29.7296005 6.43969145,30.1670277 C8.07964407,30.6044549 9.36054508,31.8853559 9.7979723,33.5253085 C10.2353995,35.1652612 9.76258177,36.9139344 8.55833333,38.11 C6.70666667,39.9616667 0,40 0,40 C0,40 0,33.2566667 1.855,31.4066667 Z"></path>
-                                  <path class="color-background" d="M17.2616667,3.90166667 C12.4943643,3.07192755 7.62174065,4.61673894 4.20333333,8.04166667 C3.31200265,8.94126033 2.53706177,9.94913142 1.89666667,11.0416667 C1.5109569,11.6966059 1.61721591,12.5295394 2.155,13.0666667 L5.47,16.3833333 C8.55036617,11.4946947 12.5559074,7.25476565 17.2616667,3.90166667 L17.2616667,3.90166667 Z" opacity="0.598539807"></path>
-                                  <path class="color-background" d="M36.0983333,22.7383333 C36.9280725,27.5056357 35.3832611,32.3782594 31.9583333,35.7966667 C31.0587397,36.6879974 30.0508686,37.4629382 28.9583333,38.1033333 C28.3033941,38.4890431 27.4704606,38.3827841 26.9333333,37.845 L23.6166667,34.53 C28.5053053,31.4496338 32.7452344,27.4440926 36.0983333,22.7383333 L36.0983333,22.7383333 Z" opacity="0.598539807"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Publikationen</p>
-                    </div>
-                    <h4 class="font-weight-bolder">2m</h4>
-                    <div class="progress w-75">
-                      <div class="progress-bar bg-dark w-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-3 py-3 ps-0">
-                    <div class="d-flex mb-2">
-                      <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-warning text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="10px" height="10px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Kooperationen</p>
-                    </div>
-                    <h4 class="font-weight-bolder">435$</h4>
-                    <div class="progress w-75">
-                      <div class="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-3 py-3 ps-0">
-                    <div class="d-flex mb-2">
-                      <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-danger text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="10px" height="10px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>settings</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(304.000000, 151.000000)">
-                                  <polygon class="color-background" opacity="0.596981957" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                                  <path class="color-background" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z" opacity="0.596981957"></path>
-                                  <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Patente</p>
-                    </div>
-                    <h4 class="font-weight-bolder">43</h4>
-                    <div class="progress w-75">
-                      <div class="progress-bar bg-dark w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-7">
+        <div class="col-lg-12">
           <div class="card z-index-2">
             <div class="card-header pb-0">
-              <h6>Publikationen im Vergleich</h6>
-              <p class="text-sm">
-                <i class="fa fa-arrow-up text-success"></i>
-                <span class="font-weight-bold">4% more</span> in 2021
-              </p>
+              <h6>Publikationen nach Erscheinungsjahr</h6>
             </div>
             <div class="card-body p-3">
+                <select id="chartType" style="float: left; margin-left: 8px;">
+                      <option value="All">Alle</option>
+                      <option value="English">English</option>
+                      <option value="German">German</option>
+                </select>
+                <p style="display: inline-block; margin-left: 10px;">Filter nach Sprache</p>
+              <input type="text" id="filter_autor" style="margin-left: 90px;"> <p style="display: inline-block; margin-left: 6px;">Filter nach Autor</p>
               <div class="chart">
                 <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
               </div>
             </div>
           </div>
         </div>
-      </div>
- <!--
-      <div class="row my-4">
-        <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-          <div class="card">
+        </div>
+
+
+
+
+
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <div class="card z-index-2">
             <div class="card-header pb-0">
-              <div class="row">
-                <div class="col-lg-6 col-7">
-                  <h6>Projects</h6>
-                  <p class="text-sm mb-0">
-                    <i class="fa fa-check text-info" aria-hidden="true"></i>
-                    <span class="font-weight-bold ms-1">30 done</span> this month
-                  </p>
-                </div>
-                <div class="col-lg-6 col-5 my-auto text-end">
-                  <div class="dropdown float-lg-end pe-4">
-                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa fa-ellipsis-v text-secondary"></i>
-                    </a>
-                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                    </ul>
-                  </div>
+              <h6>Forschungsprojekte pro Monat (Startdatum)</h6>
+                <select id="chartType2" style="float: left; margin-top: 15px;">
+                      <option value="All">Alle</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+
+                </select>
+                <p style="display: inline-block; margin-left: 10px; margin-top: 15px;">Filter nach Jahr</p>
+            </div>
+              <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3" style="margin: 25px;">
+                <div class="chart">
+                  <canvas id="chart-bars" class="chart-canvas" height="300"></canvas>
                 </div>
               </div>
-            </div>
-
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Companies</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="{{ config.ASSETS_ROOT }}/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Soft UI XD Version</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-1.jpg" alt="team1">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-2.jpg" alt="team2">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-3.jpg" alt="team3">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-4.jpg" alt="team4">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $14,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">60%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="{{ config.ASSETS_ROOT }}/img/small-logos/logo-atlassian.svg" class="avatar avatar-sm me-3" alt="atlassian">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Add Progress Track</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-2.jpg" alt="team5">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-4.jpg" alt="team6">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $3,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">10%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="{{ config.ASSETS_ROOT }}/img/small-logos/logo-slack.svg" class="avatar avatar-sm me-3" alt="team7">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Fix Platform Errors</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-3.jpg" alt="team8">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-1.jpg" alt="team9">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Not set </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">100%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="{{ config.ASSETS_ROOT }}/img/small-logos/logo-spotify.svg" class="avatar avatar-sm me-3" alt="spotify">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Launch our Mobile App</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-4.jpg" alt="user1">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-3.jpg" alt="user2">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-4.jpg" alt="user3">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-1.jpg" alt="user4">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $20,500 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">100%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="{{ config.ASSETS_ROOT }}/img/small-logos/logo-jira.svg" class="avatar avatar-sm me-3" alt="jira">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Add the New Pricing Page</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-4.jpg" alt="user5">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $500 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">25%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="{{ config.ASSETS_ROOT }}/img/small-logos/logo-invision.svg" class="avatar avatar-sm me-3" alt="invision">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Redesign New Online Shop</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-1.jpg" alt="user6">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="{{ config.ASSETS_ROOT }}/img/team-4.jpg" alt="user7">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $2,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">40%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="40"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="card h-100">
-            <div class="card-header pb-0">
-              <h6>Orders overview</h6>
-              <p class="text-sm">
-                <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold">24%</span> this month
-              </p>
-            </div>
-            <div class="card-body p-3">
-              <div class="timeline timeline-one-side">
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-bell-55 text-success text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">$2400, Design changes</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-html5 text-danger text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New order #1832412</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-cart text-info text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for April</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-credit-card text-warning text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20 AM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-key-25 text-primary text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
-                  </div>
-                </div>
-                <div class="timeline-block">
-                  <span class="timeline-step">
-                    <i class="ni ni-money-coins text-dark text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
-                  </div>
-                  -->
+        </div
 
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
 
       {% include "includes/footer.html" %}
 <br/>
-    </div>
+
 
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
+<!-- Specific JS goes HERE -->
 {% block javascripts %}
+
+
 
   <script src="{{ config.ASSETS_ROOT }}/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="{{ config.ASSETS_ROOT }}/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="{{ config.ASSETS_ROOT }}/js/plugins/chartjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
-    new Chart(ctx, {
+
+    let research_projects_all = JSON.parse({{ research_projects | tojson }});
+    research_projects_all.forEach(function(e){
+      if (typeof e === "object" ){
+       e["month"] = e.project_start.substring(3, 5);
+       e["year"] = e.project_start.substring(6, 10);
+       }
+      });
+
+    var research_projects_2022 = research_projects_all.filter(function (el) {
+    return el.year == "2022";
+    });
+    var research_projects_2021 = research_projects_all.filter(function (el) {
+    return el.year == "2021";
+    });
+    var research_projects_2020 = research_projects_all.filter(function (el) {
+    return el.year == "2020";
+    });
+    var research_projects_2019 = research_projects_all.filter(function (el) {
+    return el.year == "2019";
+    });
+    var research_projects_2018 = research_projects_all.filter(function (el) {
+    return el.year == "2018";
+    });
+    var research_projects_2017 = research_projects_all.filter(function (el) {
+    return el.year == "2017";
+    });
+    var research_projects_2016 = research_projects_all.filter(function (el) {
+    return el.year == "2016";
+    });
+
+
+    var determineChart2 = document.getElementById("chartType2").value;
+    if( determineChart2 == "2022") {
+        chart_data2 = research_projects_2022;
+    }
+   else if (determineChart2 == "2021"){
+        chart_data2 = research_projects_2021;
+    }
+   else if (determineChart2 == "2020"){
+        chart_data2 = research_projects_2020;
+    }
+   else if (determineChart2 == "2019"){
+        chart_data2 = research_projects_2019;
+    }
+   else if (determineChart2 == "2018"){
+        chart_data2 = research_projects_2018;
+    }
+   else if (determineChart2 == "2017"){
+        chart_data2 = research_projects_2017;
+    }
+   else if (determineChart2 == "2016"){
+        chart_data2 = research_projects_2016;
+    } else {
+        chart_data2 = research_projects_all;
+    }
+
+
+    var proj_01 = chart_data2.filter(function (el) {
+      return el.month=="01";
+    });
+       var proj_02 = chart_data2.filter(function (el) {
+     return el.month=="02";
+    });
+       var proj_03 = chart_data2.filter(function (el) {
+      return el.month=="03";
+    });
+       var proj_04 = chart_data2.filter(function (el) {
+      return el.month=="04";
+    });
+       var proj_05 = chart_data2.filter(function (el) {
+      return el.month=="05";
+    });
+       var proj_06 = chart_data2.filter(function (el) {
+      return el.month=="06";
+    });
+       var proj_07 = chart_data2.filter(function (el) {
+      return el.month=="07";
+    });
+        var proj_08 = chart_data2.filter(function (el) {
+      return el.month=="08";
+    });
+        var proj_09 = chart_data2.filter(function (el) {
+      return el.month=="09";
+    });
+        var proj_10 = chart_data2.filter(function (el) {
+      return el.month=="10";
+    });
+        var proj_11 = chart_data2.filter(function (el) {
+      return el.month=="11";
+    });
+        var proj_12 = chart_data2.filter(function (el) {
+      return el.month=="12";
+    });
+
+    chart_data_array2 = [proj_01.length, proj_02.length, proj_03.length, proj_04.length, proj_05.length, proj_06.length, proj_07.length, proj_08.length, proj_09.length, proj_10.length, proj_11.length, proj_12.length];
+
+
+
+    $('#chartType2').on('change', updateChart2)
+    function updateChart2() {
+
+    var research_projects_2022 = research_projects_all.filter(function (el) {
+    return el.year == "2022";
+    });
+    var research_projects_2021 = research_projects_all.filter(function (el) {
+    return el.year == "2021";
+    });
+    var research_projects_2020 = research_projects_all.filter(function (el) {
+    return el.year == "2020";
+    });
+    var research_projects_2019 = research_projects_all.filter(function (el) {
+    return el.year == "2019";
+    });
+    var research_projects_2018 = research_projects_all.filter(function (el) {
+    return el.year == "2018";
+    });
+    var research_projects_2017 = research_projects_all.filter(function (el) {
+    return el.year == "2017";
+    });
+    var research_projects_2016 = research_projects_all.filter(function (el) {
+    return el.year == "2016";
+    });
+
+
+    var determineChart2 = document.getElementById("chartType2").value;
+    if( determineChart2 == "2022") {
+        chart_data2 = research_projects_2022;
+    }
+   else if (determineChart2 == "2021"){
+        chart_data2 = research_projects_2021;
+    }
+   else if (determineChart2 == "2020"){
+        chart_data2 = research_projects_2020;
+    }
+   else if (determineChart2 == "2019"){
+        chart_data2 = research_projects_2019;
+    }
+   else if (determineChart2 == "2018"){
+        chart_data2 = research_projects_2018;
+    }
+   else if (determineChart2 == "2017"){
+        chart_data2 = research_projects_2017;
+    }
+   else if (determineChart2 == "2016"){
+        chart_data2 = research_projects_2016;
+    } else {
+        chart_data2 = research_projects_all;
+    }
+
+
+    var proj_01 = chart_data2.filter(function (el) {
+      return el.month=="01";
+    });
+       var proj_02 = chart_data2.filter(function (el) {
+     return el.month=="02";
+    });
+       var proj_03 = chart_data2.filter(function (el) {
+      return el.month=="03";
+    });
+       var proj_04 = chart_data2.filter(function (el) {
+      return el.month=="04";
+    });
+       var proj_05 = chart_data2.filter(function (el) {
+      return el.month=="05";
+    });
+       var proj_06 = chart_data2.filter(function (el) {
+      return el.month=="06";
+    });
+       var proj_07 = chart_data2.filter(function (el) {
+      return el.month=="07";
+    });
+        var proj_08 = chart_data2.filter(function (el) {
+      return el.month=="08";
+    });
+        var proj_09 = chart_data2.filter(function (el) {
+      return el.month=="09";
+    });
+        var proj_10 = chart_data2.filter(function (el) {
+      return el.month=="10";
+    });
+        var proj_11 = chart_data2.filter(function (el) {
+      return el.month=="11";
+    });
+        var proj_12 = chart_data2.filter(function (el) {
+      return el.month=="12";
+    });
+
+    chart_data_array2 = [proj_01.length, proj_02.length, proj_03.length, proj_04.length, proj_05.length, proj_06.length, proj_07.length, proj_08.length, proj_09.length, proj_10.length, proj_11.length, proj_12.length];
+
+    myChart2.data.datasets[0].data = chart_data_array2;
+    myChart2.update();
+}
+
+
+const myChart2 = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
         datasets: [{
-          label: "Sales",
+          label: "Projekte",
           tension: 0.4,
           borderWidth: 0,
           borderRadius: 4,
           borderSkipped: false,
           backgroundColor: "#fff",
-          data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
-          maxBarThickness: 6
-        }, ],
+          data: chart_data_array2,
+          maxBarThickness: 6,
+            datalabels: {
+                color: 'White',
+                anchor: 'end',
+                align:'top',
+                offset: 5
+            }
+          },
+        ],
       },
+      plugins: [ChartDataLabels],
+          options: {
+          },
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -690,6 +517,7 @@
               suggestedMax: 500,
               beginAtZero: true,
               padding: 15,
+              precision:0,
               font: {
                 size: 14,
                 family: "Open Sans",
@@ -707,12 +535,24 @@
               drawTicks: false
             },
             ticks: {
-              display: false
+              display: true,
+              color: '#fff',
+              padding: 20,
+              font: {
+                size: 11,
+                family: "Open Sans",
+                style: 'normal',
+                lineHeight: 2
+              },
             },
           },
         },
       },
     });
+
+
+
+
 
 
     var ctx2 = document.getElementById("chart-line").getContext("2d");
@@ -729,25 +569,151 @@
     gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
     gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
 
-    new Chart(ctx2, {
+
+    let publications_all = JSON.parse({{ publications | tojson }});
+
+    var filter_text = document.getElementById("filter_autor").value;
+
+    publications_all = publications_all.filter(function (el) {
+      return el.author.includes(filter_text);
+    });
+
+    var publications_eng = publications_all.filter(function (el) {
+      return el.language == "English" && el.author.includes(filter_text);
+    });
+
+    var publications_ger = publications_all.filter(function (el) {
+      return el.language == "German" && el.author.includes(filter_text);
+    });
+
+
+
+var determineChart = document.getElementById("chartType").value;
+    if( determineChart == "German") {
+        chart_data = publications_ger;
+    }
+    else if (determineChart == "English"){
+        chart_data = publications_eng;
+
+    } else {
+        chart_data = publications_all;
+    }
+
+
+    var pub_2013 = chart_data.filter(function (el) {
+      return el.publish_year=="2013";
+    });
+    var pub_2014 = chart_data.filter(function (el) {
+      return el.publish_year=="2014";
+    });
+    var pub_2015 = chart_data.filter(function (el) {
+      return el.publish_year=="2015";
+    });
+    var pub_2016 = chart_data.filter(function (el) {
+      return el.publish_year=="2016";
+    });
+    var pub_2017 = chart_data.filter(function (el) {
+      return el.publish_year=="2017";
+    });
+    var pub_2018 = chart_data.filter(function (el) {
+      return el.publish_year=="2018";
+    });
+    var pub_2019 = chart_data.filter(function (el) {
+      return el.publish_year=="2019";
+    });
+    var pub_2020 = chart_data.filter(function (el) {
+      return el.publish_year=="2020";
+    });
+    var pub_2021 = chart_data.filter(function (el) {
+      return el.publish_year=="2021";
+    });
+    var pub_2022 = chart_data.filter(function (el) {
+      return el.publish_year=="2022";
+    });
+
+    chart_data_array = [pub_2013.length, pub_2014.length, pub_2015.length, pub_2016.length, pub_2017.length, pub_2018.length, pub_2019.length, pub_2020.length, pub_2021.length, pub_2022.length];
+
+
+
+$('#chartType').on('change', updateChart)
+$('#filter_autor').on('change', updateChart)
+function updateChart() {
+    let publications_all = JSON.parse({{ publications | tojson }});
+
+    var filter_text = document.getElementById("filter_autor").value;
+
+    publications_all = publications_all.filter(function (el) {
+      return el.author.includes(filter_text);
+    });
+
+    var publications_eng = publications_all.filter(function (el) {
+      return el.language == "English" && el.author.includes(filter_text);
+    });
+
+    var publications_ger = publications_all.filter(function (el) {
+      return el.language == "German" && el.author.includes(filter_text);
+    });
+
+
+    var determineChart = document.getElementById("chartType").value;
+    if( determineChart == "German") {
+        chart_data = publications_ger;
+    }
+    else if (determineChart == "English"){
+        chart_data = publications_eng;
+
+    } else {
+        chart_data = publications_all;
+    }
+
+
+    var pub_2013 = chart_data.filter(function (el) {
+      return el.publish_year=="2013";
+    });
+    var pub_2014 = chart_data.filter(function (el) {
+      return el.publish_year=="2014";
+    });
+    var pub_2015 = chart_data.filter(function (el) {
+      return el.publish_year=="2015";
+    });
+    var pub_2016 = chart_data.filter(function (el) {
+      return el.publish_year=="2016";
+    });
+    var pub_2017 = chart_data.filter(function (el) {
+      return el.publish_year=="2017";
+    });
+    var pub_2018 = chart_data.filter(function (el) {
+      return el.publish_year=="2018";
+    });
+    var pub_2019 = chart_data.filter(function (el) {
+      return el.publish_year=="2019";
+    });
+    var pub_2020 = chart_data.filter(function (el) {
+      return el.publish_year=="2020";
+    });
+    var pub_2021 = chart_data.filter(function (el) {
+      return el.publish_year=="2021";
+    });
+    var pub_2022 = chart_data.filter(function (el) {
+      return el.publish_year=="2022";
+    });
+
+    chart_data_array = [pub_2013.length, pub_2014.length, pub_2015.length, pub_2016.length, pub_2017.length, pub_2018.length, pub_2019.length, pub_2020.length, pub_2021.length, pub_2022.length];
+
+    myChart.data.datasets[0].data = chart_data_array;
+    myChart.update();
+
+}
+
+
+const myChart = new Chart(ctx2, {
       type: "line",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-            label: "Mobile apps",
-            tension: 0.4,
-            borderWidth: 0,
-            pointRadius: 0,
-            borderColor: "#cb0c9f",
-            borderWidth: 3,
-            backgroundColor: gradientStroke1,
-            fill: true,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-            maxBarThickness: 6
+        labels: ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"],
+        datasets: [
 
-          },
           {
-            label: "Websites",
+            label: "Publikationen",
             tension: 0.4,
             borderWidth: 0,
             pointRadius: 0,
@@ -755,18 +721,27 @@
             borderWidth: 3,
             backgroundColor: gradientStroke2,
             fill: true,
-            data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-            maxBarThickness: 6
+            data: chart_data_array,
+            maxBarThickness: 6,
+            datalabels: {
+                color: '#3A416F',
+                anchor: 'end',
+                align:'top',
+                offset: 5
+            }
           },
         ],
       },
+      plugins: [ChartDataLabels],
+          options: {
+          },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: {
             display: false,
-          }
+          },
         },
         interaction: {
           intersect: false,
@@ -783,6 +758,7 @@
             },
             ticks: {
               display: true,
+              precision:0,
               padding: 10,
               color: '#b2b9bf',
               font: {
@@ -816,6 +792,373 @@
         },
       },
     });
+
+
+
+
+
+
+
+
+
+    let research_projects_all_nn = JSON.parse({{ research_projects | tojson }});
+    research_projects_all_nn.forEach(function(e){
+      if (typeof e === "object" ){
+       e["month"] = e.project_start.substring(3, 5);
+       e["year"] = e.project_start.substring(6, 10);
+       }
+      });
+
+
+
+    var research_projects_2022_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2022";
+    });
+    var research_projects_2021_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2021";
+    });
+    var research_projects_2020_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2020";
+    });
+    var research_projects_2019_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2019";
+    });
+    var research_projects_2018_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2018";
+    });
+    var research_projects_2017_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2017";
+    });
+    var research_projects_2016_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2016";
+    });
+
+
+
+    var determineChart3 = document.getElementById("chartType3").value;
+    if( determineChart3 == "2022") {
+        chart_data3 = research_projects_2022_nn;
+    }
+   else if (determineChart3 == "2021"){
+        chart_data3 = research_projects_2021_nn;
+    }
+   else if (determineChart3 == "2020"){
+        chart_data3 = research_projects_2020_nn;
+    }
+   else if (determineChart3 == "2019"){
+        chart_data3 = research_projects_2019_nn;
+    }
+   else if (determineChart3 == "2018"){
+        chart_data3 = research_projects_2018_nn;
+    }
+   else if (determineChart3 == "2017"){
+        chart_data3 = research_projects_2017_nn;
+    }
+   else if (determineChart3 == "2016"){
+        chart_data3 = research_projects_2016_nn;
+    } else {
+        chart_data3 = research_projects_all_nn;
+    }
+
+
+    data3_Thi_ct = chart_data3.filter(function (el) {
+      return el.project_type=="Third Party Funds Group - Overall project";
+    });
+    data3_Thi_le = chart_data3.filter(function (el) {
+      return el.project_type=="Third Party Funds Single";
+    });
+            data3_Own_ds = chart_data3.filter(function (el) {
+      return el.project_type=="Own Funds";
+    });
+           data3_Thi_ctt = chart_data3.filter(function (el) {
+      return el.project_type=="Third Party Funds Group - Sub project";
+    });
+        data3_Fre_kt = chart_data3.filter(function (el) {
+      return el.project_type=="Fremdprojekt";
+    });
+        data3_FAU_ds = chart_data3.filter(function (el) {
+      return el.project_type=="FAU Funds";
+    });
+
+
+    chart_data3_array = [data3_Thi_ct.length, data3_Thi_le.length, data3_Own_ds.length, data3_Thi_ctt.length, data3_Fre_kt.length, data3_FAU_ds.length];
+
+
+
+$('#chartType3').on('change', updateChart3)
+function updateChart3() {
+
+    let research_projects_all_nn = JSON.parse({{ research_projects | tojson }});
+    research_projects_all_nn.forEach(function(e){
+      if (typeof e === "object" ){
+       e["month"] = e.project_start.substring(3, 5);
+       e["year"] = e.project_start.substring(6, 10);
+       }
+      });
+
+    var research_projects_2022_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2022";
+    });
+    var research_projects_2021_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2021";
+    });
+    var research_projects_2020_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2020";
+    });
+    var research_projects_2019_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2019";
+    });
+    var research_projects_2018_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2018";
+    });
+    var research_projects_2017_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2017";
+    });
+    var research_projects_2016_nn = research_projects_all_nn.filter(function (el) {
+    return el.year == "2016";
+    });
+
+    var determineChart3 = document.getElementById("chartType3").value;
+    if( determineChart3 == "2022") {
+        chart_data3 = research_projects_2022_nn;
+    }
+   else if (determineChart3 == "2021"){
+        chart_data3 = research_projects_2021_nn;
+    }
+   else if (determineChart3 == "2020"){
+        chart_data3 = research_projects_2020_nn;
+    }
+   else if (determineChart3 == "2019"){
+        chart_data3 = research_projects_2019_nn;
+    }
+   else if (determineChart3 == "2018"){
+        chart_data3 = research_projects_2018_nn;
+    }
+   else if (determineChart3 == "2017"){
+        chart_data3 = research_projects_2017_nn;
+    }
+   else if (determineChart3 == "2016"){
+        chart_data3 = research_projects_2016_nn;
+    } else {
+        chart_data3 = research_projects_all_nn;
+    }
+
+
+    data3_Thi_ct = chart_data3.filter(function (el) {
+      return el.project_type=="Third Party Funds Group - Overall project";
+    });
+            data3_Thi_le = chart_data3.filter(function (el) {
+      return el.project_type=="Third Party Funds Single";
+    });
+            data3_Own_ds = chart_data3.filter(function (el) {
+      return el.project_type=="Own Funds";
+    });
+           data3_Thi_ctt = chart_data3.filter(function (el) {
+      return el.project_type=="Third Party Funds Group - Sub project";
+    });
+        data3_Fre_kt = chart_data3.filter(function (el) {
+      return el.project_type=="Fremdprojekt";
+    });
+        data3_FAU_ds = chart_data3.filter(function (el) {
+      return el.project_type=="FAU Funds";
+    });
+
+
+    chart_data3_array = [data3_Thi_ct.length, data3_Thi_le.length, data3_Own_ds.length, data3_Thi_ctt.length, data3_Fre_kt.length, data3_FAU_ds.length];
+
+    myChart3.data.datasets[0].data = chart_data3_array;
+    myChart3.update();
+}
+
+
+
+
+ var ctx3 = document.getElementById("chart-pie").getContext("2d");
+
+    const myChart3 = new Chart(ctx3, {
+      type: "doughnut",
+      data: {
+        labels: ["Third Party Funds Group - Overall project", "Third Party Funds Single", "Own Funds", "Third Party Funds Group - Sub project", "Fremdprojekt", "FAU Funds"],
+        datasets: [
+          {
+            label: ["Third Party Funds Group - Overall project", "Third Party Funds Single", "Own Funds", "Third Party Funds Group - Sub project", "Fremdprojekt", "FAU Funds"],
+            tension: 0.4,
+            borderWidth: 0,
+            pointRadius: 0,
+            borderColor: 'White',
+            borderWidth: 3,
+            fill: true,
+            backgroundColor: ['#00008B', "#1F75FE", "#74BBFB", "#AEDBCE", "#635666","#839AA8"],
+            data: chart_data3_array,
+            maxBarThickness: 6,
+            datalabels: {
+                color: 'White',
+                anchor: 'center'
+            }
+          },
+        ],
+      },
+      plugins: [ChartDataLabels],
+          options: {
+          },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+          }
+        },
+        interaction: {
+          intersect: false,
+          mode: 'index',
+        },
+      },
+    });
+
+
+
+
+
+
+
+
+
+
+
+    let publications_all_new = JSON.parse({{ publications | tojson }});
+
+    var pub_2013 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2013";
+    });
+    var pub_2014 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2014";
+    });
+    var pub_2015 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2015";
+    });
+    var pub_2016 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2016";
+    });
+    var pub_2017 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2017";
+    });
+    var pub_2018 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2018";
+    });
+    var pub_2019 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2019";
+    });
+    var pub_2020 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2020";
+    });
+    var pub_2021 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2021";
+    });
+    var pub_2022 = publications_all_new.filter(function (el) {
+      return el.publish_year=="2022";
+    });
+
+
+    let pub_all_count = publications_all_new.length;
+    let pub_2022_count = pub_2022.length;
+    let pub_2021_count = pub_2021.length;
+    let pub_2020_count = pub_2020.length;
+    let pub_2019_count = pub_2019.length;
+    let pub_2018_count = pub_2018.length;
+    let pub_2017_count = pub_2017.length;
+    let pub_2016_count = pub_2016.length;
+    let pub_2015_count = pub_2015.length;
+    let pub_2014_count = pub_2014.length;
+    let pub_2013_count = pub_2013.length;
+
+
+    let research_projects_all_count = research_projects_all.length;
+    let research_projects_2022_count = research_projects_2022.length;
+    let research_projects_2021_count = research_projects_2021.length;
+    let research_projects_2020_count = research_projects_2020.length;
+    let research_projects_2019_count = research_projects_2019.length;
+    let research_projects_2018_count = research_projects_2018.length;
+    let research_projects_2017_count = research_projects_2017.length;
+    let research_projects_2016_count = research_projects_2016.length;
+
+    document.getElementById("number_projects").innerHTML = research_projects_2022_count;
+
+    var cardfilter = document.getElementById("cardfilter").value;
+
+    if( cardfilter == "2022") {
+         document.getElementById("number_projects").innerHTML = research_projects_2022_count;
+         document.getElementById("number_pub").innerHTML = pub_2022_count;
+    }
+   else if (cardfilter == "2021"){
+         document.getElementById("number_projects").innerHTML = research_projects_2021_count;
+         document.getElementById("number_pub").innerHTML = pub_2021_count;
+    }
+   else if (cardfilter == "2020"){
+         document.getElementById("number_projects").innerHTML = research_projects_2020_count;
+         document.getElementById("number_pub").innerHTML = pub_2020_count;
+    }
+   else if (cardfilter == "2019"){
+         document.getElementById("number_projects").innerHTML = research_projects_2019_count;
+         document.getElementById("number_pub").innerHTML = pub_2019_count;
+    }
+   else if (cardfilter == "2018"){
+         document.getElementById("number_projects").innerHTML = research_projects_2018_count;
+         document.getElementById("number_pub").innerHTML = pub_2018_count;
+    }
+   else if (cardfilter == "2017"){
+         document.getElementById("number_projects").innerHTML = research_projects_2017_count;
+         document.getElementById("number_pub").innerHTML = pub_2017_count;
+    }
+   else if (cardfilter == "2016"){
+         document.getElementById("number_projects").innerHTML = research_projects_2016_count;
+         document.getElementById("number_pub").innerHTML = pub_2016_count;
+    } else {
+         document.getElementById("number_projects").innerHTML = research_projects_all_count;
+         document.getElementById("number_pub").innerHTML = pub_all_count;
+    }
+
+    $('#cardfilter').on('change', updateCard)
+    function updateCard() {
+    var cardfilter = document.getElementById("cardfilter").value;
+
+    if( cardfilter == "2022") {
+         document.getElementById("number_projects").innerHTML = research_projects_2022_count;
+         document.getElementById("number_pub").innerHTML = pub_2022_count;
+    }
+   else if (cardfilter == "2021"){
+         document.getElementById("number_projects").innerHTML = research_projects_2021_count;
+         document.getElementById("number_pub").innerHTML = pub_2021_count;
+    }
+   else if (cardfilter == "2020"){
+         document.getElementById("number_projects").innerHTML = research_projects_2020_count;
+         document.getElementById("number_pub").innerHTML = pub_2020_count;
+    }
+   else if (cardfilter == "2019"){
+         document.getElementById("number_projects").innerHTML = research_projects_2019_count;
+         document.getElementById("number_pub").innerHTML = pub_2019_count;
+    }
+   else if (cardfilter == "2018"){
+         document.getElementById("number_projects").innerHTML = research_projects_2018_count;
+         document.getElementById("number_pub").innerHTML = pub_2018_count;
+    }
+   else if (cardfilter == "2017"){
+         document.getElementById("number_projects").innerHTML = research_projects_2017_count;
+         document.getElementById("number_pub").innerHTML = pub_2017_count;
+    }
+   else if (cardfilter == "2016"){
+         document.getElementById("number_projects").innerHTML = research_projects_2016_count;
+         document.getElementById("number_pub").innerHTML = pub_2016_count;
+    } else {
+         document.getElementById("number_projects").innerHTML = research_projects_all_count;
+         document.getElementById("number_pub").innerHTML = pub_all_count;
+    }
+
+
+  }
+
+
+
   </script>
 
 {% endblock javascripts %}
