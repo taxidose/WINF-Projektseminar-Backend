@@ -35,7 +35,6 @@ def index():
             filtered_data_all_wiso_projects[i]["project_end"] = datetime.datetime.strptime(
                 filtered_data_all_wiso_projects[i]["project_end"], '%Y-%m-%d').strftime('%d.%m.%Y')
 
-    print(filtered_data_all_wiso_projects[2])
 
     return render_template('home/index.html',
                            publications=json.dumps(filtered_data_all_wiso_publs),
