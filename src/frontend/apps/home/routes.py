@@ -9,6 +9,8 @@ from flask_login import login_required
 from jinja2 import TemplateNotFound
 import datetime
 
+import sys
+sys.path.append("..")
 from backend.xml_script import XMLProcessing, URLs
 
 
