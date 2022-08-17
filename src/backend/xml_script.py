@@ -201,12 +201,25 @@ class XMLProcessing:
         return [count_dooku, growth]
 
     @staticmethod
+    def keyword_helper(tree):
+        return_list = []
+        for data_object in tree:
+            object = []
+            for attribute in data_object:
+                if attribute.attrib.get("name") == "Keywords":
+                    for data in attribute:
+                        object.append("Legacy Problem")
+                        object.append(data.text)
+                    return_list.append(object)
+
+        return return_list
+
+    @staticmethod
     def get_all_keywords(tree):
-        keys = XMLProcessing.get_wanted_data_from_data_object(tree, ["Keywords"])
+        keys = XMLProcessing.keyword_helper(tree)
         keywords = []
         for element in keys:
-            for sub_element in element:
-                keywords.append(str(sub_element[1]))
+            keywords.append(str(element[1]))
 
         dummylist = keywords.copy()
 
@@ -239,7 +252,7 @@ class XMLProcessing:
 
 # ===================================Renes Testwiese=========================================
 
-#e = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
+e = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PUBLICATIONS"])
 # p = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"])
 # filter = ["srcAuthors", "publYear"]
 # value = ["Sven", "2020"]
@@ -256,7 +269,7 @@ class XMLProcessing:
 
 # print(XMLProcessing.get_metrics(e))
 
-# print(XMLProcessing.get_all_keywords(e))
+print(XMLProcessing.get_all_keywords(e))
 # =============================================================================================
 
 
