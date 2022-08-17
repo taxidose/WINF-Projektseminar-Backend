@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="933530ba-233a-44d2-84af-746f6b2f5f87" name="Changes" comment="running; dummy data">
-      <change beforePath="$PROJECT_DIR$/.idea/WINF-Projektseminar-Backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WINF-Projektseminar-Backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/backend/xml_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/xml_script.py" afterDir="false" />
     </list>
@@ -117,6 +115,8 @@
       <workItem from="1656440498785" duration="4042000" />
       <workItem from="1656526258779" duration="2640000" />
       <workItem from="1656589093347" duration="1784000" />
+      <workItem from="1658616471967" duration="883000" />
+      <workItem from="1660742814504" duration="1540000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1655118474729</created>
@@ -162,6 +162,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="running; dummy data" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WINF_Projektseminar_Backend$xml_script.coverage" NAME="xml_script Coverage Results" MODIFIED="1656605077787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/backend" />
+    <SUITE FILE_PATH="coverage/WINF_Projektseminar_Backend$xml_script.coverage" NAME="xml_script Coverage Results" MODIFIED="1660744278270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/backend" />
   </component>
 </project>
