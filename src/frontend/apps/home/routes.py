@@ -2,13 +2,16 @@
 """
 Copyright (c) 2019 - present AppSeed.us
 """
-
-from src.frontend.apps.home import blueprint
+import json
+from apps.home import blueprint
 from flask import render_template
 from flask_login import login_required
-import json
+from jinja2 import TemplateNotFound
+import datetime
 
-from src.backend.xml_script import XMLProcessing, URLs
+import sys
+sys.path.append("..")
+from backend.xml_script import XMLProcessing, URLs
 
 
 @blueprint.route("/index")
@@ -21,9 +24,17 @@ def index():
                                                                                   publs_selected_attributes)
 
     xml_data_all_wiso_projects = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"])
-    selected_xml_attributes = ["relPersIDlead", "cfTitle", "funderlink", "Project Typ", "cfStartDate", "cfEndDate"]
+    selected_xml_attributes = ["relPersIDlead", "cfTitle", "funderlink", "Project Type", "cfStartDate", "cfEndDate"]
     filtered_data_all_wiso_projects = XMLProcessing.get_wanted_data_from_data_object(xml_data_all_wiso_projects,
                                                                                      selected_xml_attributes)
+
+    for i in range(0, len(filtered_data_all_wiso_projects)):
+        filtered_data_all_wiso_projects[i]["project_start"] = datetime.datetime.strptime(
+            filtered_data_all_wiso_projects[i]["project_start"], '%Y-%m-%d').strftime('%d.%m.%Y')
+        if filtered_data_all_wiso_projects[i]["project_end"] != "None":
+            filtered_data_all_wiso_projects[i]["project_end"] = datetime.datetime.strptime(
+                filtered_data_all_wiso_projects[i]["project_end"], '%Y-%m-%d').strftime('%d.%m.%Y')
+
 
     return render_template('home/index.html',
                            publications=json.dumps(filtered_data_all_wiso_publs),
@@ -36,9 +47,16 @@ def index():
 @login_required
 def research_projects_table():
     xml_data_all_wiso_projects = XMLProcessing.get_xml_data(xml_url=URLs["ALL_WISO_PROJECTS"])
-    selected_xml_attributes = ["relPersIDlead", "cfTitle", "funderlink", "Project Typ", "cfStartDate", "cfEndDate"]
+    selected_xml_attributes = ["relPersIDlead", "cfTitle", "funderlink", "Project Type", "cfStartDate", "cfEndDate"]
     filtered_data_all_wiso_projects = XMLProcessing.get_wanted_data_from_data_object(xml_data_all_wiso_projects,
                                                                                      selected_xml_attributes)
+
+    for i in range(0, len(filtered_data_all_wiso_projects)):
+        filtered_data_all_wiso_projects[i]["project_start"] = datetime.datetime.strptime(
+            filtered_data_all_wiso_projects[i]["project_start"], '%Y-%m-%d').strftime('%d.%m.%Y')
+        if filtered_data_all_wiso_projects[i]["project_end"] != "None":
+            filtered_data_all_wiso_projects[i]["project_end"] = datetime.datetime.strptime(
+                filtered_data_all_wiso_projects[i]["project_end"], '%Y-%m-%d').strftime('%d.%m.%Y')
 
     return render_template("home/tables.html",
                            research_projects=filtered_data_all_wiso_projects)
@@ -54,5 +72,11 @@ def publications_table():
     filtered_data_all_wiso_publs = XMLProcessing.get_wanted_data_from_data_object(xml_data_all_wiso_publs,
                                                                                   selected_xml_attributes)
 
+
     return render_template("home/tables2.html",
                            publications=filtered_data_all_wiso_publs)
+
+
+
+
+

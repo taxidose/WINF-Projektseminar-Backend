@@ -25,6 +25,7 @@ class ProductionConfig(Config):
 
     # Security
     SESSION_COOKIE_HTTPONLY = True
+    LOGIN_DISABLED = True
     REMEMBER_COOKIE_HTTPONLY = True
     REMEMBER_COOKIE_DURATION = 3600
 
@@ -47,4 +48,6 @@ class DebugConfig(Config):
 config_dict = {
     'Production': ProductionConfig,
     'Debug'     : DebugConfig
+
+
 }

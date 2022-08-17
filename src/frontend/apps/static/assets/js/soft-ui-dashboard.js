@@ -419,6 +419,8 @@ function navbarColorOnResize() {
 window.addEventListener("resize", sidenavTypeOnResize);
 window.addEventListener("load", sidenavTypeOnResize);
 
+
+
 function sidenavTypeOnResize() {
   let elements = document.querySelectorAll('[onclick="sidebarType(this)"]');
   if (window.innerWidth < 1200) {

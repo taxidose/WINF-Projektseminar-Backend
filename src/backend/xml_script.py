@@ -24,7 +24,7 @@ MAPPING_XML_FRONTEND = {
     "Keywords": "keywords",
     "relPersIDlead": "project_leader",
     "funderlink": "funder",
-    "Project Typ": "project_type",
+    "Project Type": "project_type",
     "cfStartDate": "project_start",
     "cfEndDate": "project_end"
     #TODO: refactor as enum & switch key and value probably better cause publs_selected_attribute etc. in routes.py
